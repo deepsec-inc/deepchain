@@ -4,11 +4,11 @@ package mocks
 import (
 	"sync"
 
-	"github.com/hyperledger/fabric/common/channelconfig"
-	"github.com/hyperledger/fabric/orderer/common/blockcutter"
-	"github.com/hyperledger/fabric/orderer/common/msgprocessor"
-	"github.com/hyperledger/fabric/orderer/consensus"
-	"github.com/hyperledger/fabric/protos/common"
+	"deepchain/common/channelconfig"
+	"deepchain/orderer/common/blockcutter"
+	"deepchain/orderer/common/msgprocessor"
+	"deepchain/orderer/consensus"
+	"deepchain/protos/common"
 )
 
 type FakeConsenterSupport struct {

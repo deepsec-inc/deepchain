@@ -4,9 +4,9 @@ package mock
 import (
 	"sync"
 
-	"github.com/hyperledger/fabric/peer/chaincode/api"
-	pcommon "github.com/hyperledger/fabric/protos/common"
-	pb "github.com/hyperledger/fabric/protos/peer"
+	"deepchain/peer/chaincode/api"
+	pcommon "deepchain/protos/common"
+	pb "deepchain/protos/peer"
 )
 
 type Deliver struct {

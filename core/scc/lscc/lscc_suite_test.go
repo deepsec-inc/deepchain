@@ -9,11 +9,11 @@ package lscc_test
 import (
 	"testing"
 
-	"github.com/hyperledger/fabric/core/chaincode/shim"
-	"github.com/hyperledger/fabric/core/common/ccprovider"
-	"github.com/hyperledger/fabric/core/common/sysccprovider"
-	"github.com/hyperledger/fabric/core/ledger"
-	"github.com/hyperledger/fabric/core/scc/lscc"
+	"deepchain/core/chaincode/shim"
+	"deepchain/core/common/ccprovider"
+	"deepchain/core/common/sysccprovider"
+	"deepchain/core/ledger"
+	"deepchain/core/scc/lscc"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )

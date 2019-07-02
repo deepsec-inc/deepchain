@@ -14,12 +14,12 @@ import (
 	"sync"
 	"time"
 
-	"github.com/hyperledger/fabric/common/flogging"
-	"github.com/hyperledger/fabric/core/comm"
-	"github.com/hyperledger/fabric/core/deliverservice/blocksprovider"
-	"github.com/hyperledger/fabric/gossip/api"
-	"github.com/hyperledger/fabric/gossip/util"
-	"github.com/hyperledger/fabric/protos/orderer"
+	"deepchain/common/flogging"
+	"deepchain/core/comm"
+	"deepchain/core/deliverservice/blocksprovider"
+	"deepchain/gossip/api"
+	"deepchain/gossip/util"
+	"deepchain/protos/orderer"
 	"github.com/spf13/viper"
 	"google.golang.org/grpc"
 )

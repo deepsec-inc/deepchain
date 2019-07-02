@@ -7,18 +7,18 @@ SPDX-License-Identifier: Apache-2.0
 package test
 
 import (
-	"github.com/hyperledger/fabric/common/channelconfig"
-	"github.com/hyperledger/fabric/common/flogging"
-	"github.com/hyperledger/fabric/common/genesis"
-	"github.com/hyperledger/fabric/common/tools/configtxgen/configtxgentest"
-	"github.com/hyperledger/fabric/common/tools/configtxgen/encoder"
-	genesisconfig "github.com/hyperledger/fabric/common/tools/configtxgen/localconfig"
-	"github.com/hyperledger/fabric/core/ledger/util"
-	cb "github.com/hyperledger/fabric/protos/common"
-	mspproto "github.com/hyperledger/fabric/protos/msp"
-	"github.com/hyperledger/fabric/protos/peer"
-	pb "github.com/hyperledger/fabric/protos/peer"
-	"github.com/hyperledger/fabric/protos/utils"
+	"deepchain/common/channelconfig"
+	"deepchain/common/flogging"
+	"deepchain/common/genesis"
+	"deepchain/common/tools/configtxgen/configtxgentest"
+	"deepchain/common/tools/configtxgen/encoder"
+	genesisconfig "deepchain/common/tools/configtxgen/localconfig"
+	"deepchain/core/ledger/util"
+	cb "deepchain/protos/common"
+	mspproto "deepchain/protos/msp"
+	"deepchain/protos/peer"
+	pb "deepchain/protos/peer"
+	"deepchain/protos/utils"
 )
 
 var logger = flogging.MustGetLogger("common.configtx.test")

@@ -10,10 +10,10 @@ import (
 	"context"
 	"time"
 
-	"github.com/hyperledger/fabric/common/crypto"
-	"github.com/hyperledger/fabric/core/handlers/auth"
-	"github.com/hyperledger/fabric/protos/peer"
-	"github.com/hyperledger/fabric/protos/utils"
+	"deepchain/common/crypto"
+	"deepchain/core/handlers/auth"
+	"deepchain/protos/peer"
+	"deepchain/protos/utils"
 	"github.com/pkg/errors"
 )
 

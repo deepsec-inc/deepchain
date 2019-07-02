@@ -9,10 +9,10 @@ package peer
 import (
 	"fmt"
 
-	"github.com/hyperledger/fabric/core/ledger"
-	"github.com/hyperledger/fabric/core/ledger/customtx"
-	"github.com/hyperledger/fabric/protos/common"
-	"github.com/hyperledger/fabric/protos/utils"
+	"deepchain/core/ledger"
+	"deepchain/core/ledger/customtx"
+	"deepchain/protos/common"
+	"deepchain/protos/utils"
 )
 
 const (

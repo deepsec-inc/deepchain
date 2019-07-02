@@ -9,7 +9,7 @@ package channel
 import (
 	"io/ioutil"
 
-	"github.com/hyperledger/fabric/protos/utils"
+	"deepchain/protos/utils"
 	"github.com/spf13/cobra"
 )
 

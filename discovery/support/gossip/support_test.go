@@ -9,11 +9,11 @@ package gossip_test
 import (
 	"testing"
 
-	gossipSupport "github.com/hyperledger/fabric/discovery/support/gossip"
-	"github.com/hyperledger/fabric/discovery/support/mocks"
-	"github.com/hyperledger/fabric/gossip/common"
-	"github.com/hyperledger/fabric/gossip/discovery"
-	"github.com/hyperledger/fabric/protos/gossip"
+	gossipSupport "deepchain/discovery/support/gossip"
+	"deepchain/discovery/support/mocks"
+	"deepchain/gossip/common"
+	"deepchain/gossip/discovery"
+	"deepchain/protos/gossip"
 	"github.com/stretchr/testify/assert"
 )
 

@@ -17,9 +17,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/hyperledger/fabric/core/chaincode/platforms"
-	"github.com/hyperledger/fabric/core/config/configtest"
-	"github.com/hyperledger/fabric/protos/peer"
+	"deepchain/core/chaincode/platforms"
+	"deepchain/core/config/configtest"
+	"deepchain/protos/peer"
 	"github.com/spf13/viper"
 )
 

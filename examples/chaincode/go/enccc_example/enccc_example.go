@@ -9,11 +9,11 @@ package main
 import (
 	"fmt"
 
-	"github.com/hyperledger/fabric/bccsp"
-	"github.com/hyperledger/fabric/bccsp/factory"
-	"github.com/hyperledger/fabric/core/chaincode/shim"
-	"github.com/hyperledger/fabric/core/chaincode/shim/ext/entities"
-	pb "github.com/hyperledger/fabric/protos/peer"
+	"deepchain/bccsp"
+	"deepchain/bccsp/factory"
+	"deepchain/core/chaincode/shim"
+	"deepchain/core/chaincode/shim/ext/entities"
+	pb "deepchain/protos/peer"
 )
 
 const DECKEY = "DECKEY"

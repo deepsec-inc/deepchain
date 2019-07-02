@@ -12,11 +12,11 @@ import (
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 
-	"github.com/hyperledger/fabric/common/channelconfig"
-	"github.com/hyperledger/fabric/common/tools/configtxgen/configtxgentest"
-	"github.com/hyperledger/fabric/common/tools/configtxgen/encoder"
-	genesisconfig "github.com/hyperledger/fabric/common/tools/configtxgen/localconfig"
-	cb "github.com/hyperledger/fabric/protos/common"
+	"deepchain/common/channelconfig"
+	"deepchain/common/tools/configtxgen/configtxgentest"
+	"deepchain/common/tools/configtxgen/encoder"
+	genesisconfig "deepchain/common/tools/configtxgen/localconfig"
+	cb "deepchain/protos/common"
 
 	"github.com/pkg/errors"
 )

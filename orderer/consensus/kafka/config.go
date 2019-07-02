@@ -10,7 +10,7 @@ import (
 	"crypto/tls"
 	"crypto/x509"
 
-	localconfig "github.com/hyperledger/fabric/orderer/common/localconfig"
+	localconfig "deepchain/orderer/common/localconfig"
 
 	"github.com/Shopify/sarama"
 )

@@ -11,8 +11,8 @@ import (
 	"testing"
 
 	"github.com/golang/protobuf/proto"
-	"github.com/hyperledger/fabric/common/ledger/testutil"
-	"github.com/hyperledger/fabric/common/ledger/util"
+	"deepchain/common/ledger/testutil"
+	"deepchain/common/ledger/util"
 	"github.com/stretchr/testify/assert"
 )
 

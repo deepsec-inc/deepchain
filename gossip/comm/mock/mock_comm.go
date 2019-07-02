@@ -9,11 +9,11 @@ package mock
 import (
 	"time"
 
-	"github.com/hyperledger/fabric/gossip/api"
-	"github.com/hyperledger/fabric/gossip/comm"
-	"github.com/hyperledger/fabric/gossip/common"
-	"github.com/hyperledger/fabric/gossip/util"
-	proto "github.com/hyperledger/fabric/protos/gossip"
+	"deepchain/gossip/api"
+	"deepchain/gossip/comm"
+	"deepchain/gossip/common"
+	"deepchain/gossip/util"
+	proto "deepchain/protos/gossip"
 )
 
 // Mock which aims to simulate socket

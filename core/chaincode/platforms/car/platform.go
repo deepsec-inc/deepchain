@@ -14,10 +14,10 @@ import (
 	"io/ioutil"
 	"strings"
 
-	"github.com/hyperledger/fabric/core/chaincode/platforms"
-	"github.com/hyperledger/fabric/core/chaincode/platforms/util"
-	cutil "github.com/hyperledger/fabric/core/container/util"
-	pb "github.com/hyperledger/fabric/protos/peer"
+	"deepchain/core/chaincode/platforms"
+	"deepchain/core/chaincode/platforms/util"
+	cutil "deepchain/core/container/util"
+	pb "deepchain/protos/peer"
 )
 
 // Platform for the CAR type

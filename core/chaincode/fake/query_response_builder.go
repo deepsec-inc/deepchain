@@ -4,9 +4,9 @@ package fake
 import (
 	sync "sync"
 
-	ledger "github.com/hyperledger/fabric/common/ledger"
-	chaincode "github.com/hyperledger/fabric/core/chaincode"
-	peer "github.com/hyperledger/fabric/protos/peer"
+	ledger "deepchain/common/ledger"
+	chaincode "deepchain/core/chaincode"
+	peer "deepchain/protos/peer"
 )
 
 type QueryResponseBuilder struct {

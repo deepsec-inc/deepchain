@@ -17,8 +17,8 @@ import (
 	"chaincodes/AutoVendor/directdep"
 	"fmt"
 
-	"github.com/hyperledger/fabric/core/chaincode/shim"
-	pb "github.com/hyperledger/fabric/protos/peer"
+	"deepchain/core/chaincode/shim"
+	pb "deepchain/protos/peer"
 )
 
 // SimpleChaincode example simple Chaincode implementation

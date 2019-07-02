@@ -4,7 +4,7 @@ package mock
 import (
 	sync "sync"
 
-	peer "github.com/hyperledger/fabric/protos/peer"
+	peer "deepchain/protos/peer"
 )
 
 type ChaincodeStream struct {

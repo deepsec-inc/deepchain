@@ -19,12 +19,12 @@ package support
 import (
 	"sync"
 
-	"github.com/hyperledger/fabric/common/channelconfig"
-	mockpolicies "github.com/hyperledger/fabric/common/mocks/policies"
-	"github.com/hyperledger/fabric/common/policies"
-	"github.com/hyperledger/fabric/core/ledger"
-	"github.com/hyperledger/fabric/msp"
-	"github.com/hyperledger/fabric/protos/common"
+	"deepchain/common/channelconfig"
+	mockpolicies "deepchain/common/mocks/policies"
+	"deepchain/common/policies"
+	"deepchain/core/ledger"
+	"deepchain/msp"
+	"deepchain/protos/common"
 )
 
 type Support struct {

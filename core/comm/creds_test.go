@@ -15,8 +15,8 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/hyperledger/fabric/common/flogging/floggingtest"
-	"github.com/hyperledger/fabric/core/comm"
+	"deepchain/common/flogging/floggingtest"
+	"deepchain/core/comm"
 	"github.com/stretchr/testify/assert"
 )
 

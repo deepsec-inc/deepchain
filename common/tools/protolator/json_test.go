@@ -25,7 +25,7 @@ import (
 	"testing"
 
 	"github.com/golang/protobuf/proto"
-	"github.com/hyperledger/fabric/common/tools/protolator/testprotos"
+	"deepchain/common/tools/protolator/testprotos"
 	"github.com/stretchr/testify/assert"
 )
 

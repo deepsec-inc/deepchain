@@ -12,8 +12,8 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/hyperledger/fabric/gossip/api"
-	"github.com/hyperledger/fabric/gossip/common"
+	"deepchain/gossip/api"
+	"deepchain/gossip/common"
 	errors "github.com/pkg/errors"
 )
 

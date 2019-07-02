@@ -9,10 +9,10 @@ package internal
 import (
 	"testing"
 
-	"github.com/hyperledger/fabric/core/ledger/kvledger/txmgmt/privacyenabledstate"
-	"github.com/hyperledger/fabric/core/ledger/kvledger/txmgmt/rwsetutil"
-	"github.com/hyperledger/fabric/core/ledger/kvledger/txmgmt/version"
-	"github.com/hyperledger/fabric/protos/ledger/rwset/kvrwset"
+	"deepchain/core/ledger/kvledger/txmgmt/privacyenabledstate"
+	"deepchain/core/ledger/kvledger/txmgmt/rwsetutil"
+	"deepchain/core/ledger/kvledger/txmgmt/version"
+	"deepchain/protos/ledger/rwset/kvrwset"
 	"github.com/stretchr/testify/assert"
 )
 

@@ -10,8 +10,8 @@ import (
 	"testing"
 
 	"github.com/golang/protobuf/proto"
-	"github.com/hyperledger/fabric/core/ledger"
-	"github.com/hyperledger/fabric/protos/common"
+	"deepchain/core/ledger"
+	"deepchain/protos/common"
 	"github.com/stretchr/testify/assert"
 )
 

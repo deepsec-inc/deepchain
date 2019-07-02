@@ -9,10 +9,10 @@ package deliver_test
 import (
 	"time"
 
-	"github.com/hyperledger/fabric/common/deliver"
-	"github.com/hyperledger/fabric/common/deliver/mock"
-	cb "github.com/hyperledger/fabric/protos/common"
-	"github.com/hyperledger/fabric/protos/utils"
+	"deepchain/common/deliver"
+	"deepchain/common/deliver/mock"
+	cb "deepchain/protos/common"
+	"deepchain/protos/utils"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 	"github.com/pkg/errors"

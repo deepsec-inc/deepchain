@@ -7,8 +7,8 @@ SPDX-License-Identifier: Apache-2.0
 package main
 
 import (
-	"github.com/hyperledger/fabric/core/handlers/validation/api"
-	"github.com/hyperledger/fabric/protos/common"
+	"deepchain/core/handlers/validation/api"
+	"deepchain/protos/common"
 )
 
 // NoOpValidator is used to test validation plugin infrastructure

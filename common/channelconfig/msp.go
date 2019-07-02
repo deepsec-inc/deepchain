@@ -10,9 +10,9 @@ import (
 	"fmt"
 
 	"github.com/golang/protobuf/proto"
-	"github.com/hyperledger/fabric/msp"
-	"github.com/hyperledger/fabric/msp/cache"
-	mspprotos "github.com/hyperledger/fabric/protos/msp"
+	"deepchain/msp"
+	"deepchain/msp/cache"
+	mspprotos "deepchain/protos/msp"
 	"github.com/pkg/errors"
 )
 

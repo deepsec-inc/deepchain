@@ -10,12 +10,12 @@ import (
 	"fmt"
 
 	"github.com/golang/protobuf/proto"
-	"github.com/hyperledger/fabric/common/channelconfig"
-	"github.com/hyperledger/fabric/common/configtx"
-	"github.com/hyperledger/fabric/common/crypto"
-	"github.com/hyperledger/fabric/common/policies"
-	cb "github.com/hyperledger/fabric/protos/common"
-	"github.com/hyperledger/fabric/protos/utils"
+	"deepchain/common/channelconfig"
+	"deepchain/common/configtx"
+	"deepchain/common/crypto"
+	"deepchain/common/policies"
+	cb "deepchain/protos/common"
+	"deepchain/protos/utils"
 
 	"github.com/pkg/errors"
 )

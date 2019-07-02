@@ -16,7 +16,7 @@ limitations under the License.
 package shim
 
 import (
-	pb "github.com/hyperledger/fabric/protos/peer"
+	pb "deepchain/protos/peer"
 )
 
 const (

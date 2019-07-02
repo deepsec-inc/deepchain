@@ -7,7 +7,7 @@ package bridge
 
 import (
 	"github.com/hyperledger/fabric-amcl/amcl"
-	cryptolib "github.com/hyperledger/fabric/idemix"
+	cryptolib "deepchain/idemix"
 )
 
 // NewRandOrPanic return a new amcl PRG or panic

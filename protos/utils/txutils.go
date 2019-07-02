@@ -11,12 +11,12 @@ import (
 	"fmt"
 
 	"github.com/golang/protobuf/proto"
-	"github.com/hyperledger/fabric/bccsp"
-	"github.com/hyperledger/fabric/bccsp/factory"
-	"github.com/hyperledger/fabric/common/crypto"
-	"github.com/hyperledger/fabric/msp"
-	"github.com/hyperledger/fabric/protos/common"
-	"github.com/hyperledger/fabric/protos/peer"
+	"deepchain/bccsp"
+	"deepchain/bccsp/factory"
+	"deepchain/common/crypto"
+	"deepchain/msp"
+	"deepchain/protos/common"
+	"deepchain/protos/peer"
 	"github.com/pkg/errors"
 )
 

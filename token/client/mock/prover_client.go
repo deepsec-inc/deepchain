@@ -5,7 +5,7 @@ import (
 	context "context"
 	sync "sync"
 
-	token "github.com/hyperledger/fabric/protos/token"
+	token "deepchain/protos/token"
 	grpc "google.golang.org/grpc"
 )
 

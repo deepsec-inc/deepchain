@@ -7,13 +7,13 @@ SPDX-License-Identifier: Apache-2.0
 package endorser
 
 import (
-	"github.com/hyperledger/fabric/common/channelconfig"
-	"github.com/hyperledger/fabric/core/common/ccprovider"
-	"github.com/hyperledger/fabric/core/endorser"
-	"github.com/hyperledger/fabric/core/ledger"
-	mc "github.com/hyperledger/fabric/core/mocks/ccprovider"
-	"github.com/hyperledger/fabric/protos/common"
-	pb "github.com/hyperledger/fabric/protos/peer"
+	"deepchain/common/channelconfig"
+	"deepchain/core/common/ccprovider"
+	"deepchain/core/endorser"
+	"deepchain/core/ledger"
+	mc "deepchain/core/mocks/ccprovider"
+	"deepchain/protos/common"
+	pb "deepchain/protos/peer"
 	"github.com/stretchr/testify/mock"
 )
 

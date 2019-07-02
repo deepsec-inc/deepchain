@@ -19,13 +19,13 @@ package deliverclient
 import (
 	"math"
 
-	"github.com/hyperledger/fabric/common/localmsp"
-	"github.com/hyperledger/fabric/common/util"
-	"github.com/hyperledger/fabric/core/comm"
-	"github.com/hyperledger/fabric/core/deliverservice/blocksprovider"
-	"github.com/hyperledger/fabric/protos/common"
-	"github.com/hyperledger/fabric/protos/orderer"
-	"github.com/hyperledger/fabric/protos/utils"
+	"deepchain/common/localmsp"
+	"deepchain/common/util"
+	"deepchain/core/comm"
+	"deepchain/core/deliverservice/blocksprovider"
+	"deepchain/protos/common"
+	"deepchain/protos/orderer"
+	"deepchain/protos/utils"
 )
 
 type blocksRequester struct {

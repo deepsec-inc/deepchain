@@ -20,9 +20,9 @@ import (
 	"sort"
 
 	"github.com/golang/protobuf/proto"
-	cb "github.com/hyperledger/fabric/protos/common"
-	"github.com/hyperledger/fabric/protos/msp"
-	"github.com/hyperledger/fabric/protos/utils"
+	cb "deepchain/protos/common"
+	"deepchain/protos/msp"
+	"deepchain/protos/utils"
 )
 
 // AcceptAllPolicy always evaluates to true

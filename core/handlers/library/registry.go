@@ -13,11 +13,11 @@ import (
 	"reflect"
 	"sync"
 
-	"github.com/hyperledger/fabric/common/flogging"
-	"github.com/hyperledger/fabric/core/handlers/auth"
-	"github.com/hyperledger/fabric/core/handlers/decoration"
-	endorsement2 "github.com/hyperledger/fabric/core/handlers/endorsement/api"
-	"github.com/hyperledger/fabric/core/handlers/validation/api"
+	"deepchain/common/flogging"
+	"deepchain/core/handlers/auth"
+	"deepchain/core/handlers/decoration"
+	endorsement2 "deepchain/core/handlers/endorsement/api"
+	"deepchain/core/handlers/validation/api"
 )
 
 var logger = flogging.MustGetLogger("core.handlers")

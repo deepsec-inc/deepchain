@@ -10,9 +10,9 @@ import (
 	"math"
 	"testing"
 
-	"github.com/hyperledger/fabric/core/common/privdata"
-	"github.com/hyperledger/fabric/core/ledger/pvtdatapolicy/mock"
-	"github.com/hyperledger/fabric/protos/common"
+	"deepchain/core/common/privdata"
+	"deepchain/core/ledger/pvtdatapolicy/mock"
+	"deepchain/protos/common"
 	"github.com/stretchr/testify/assert"
 )
 

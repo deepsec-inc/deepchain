@@ -18,17 +18,17 @@ import (
 	"testing"
 
 	"github.com/golang/protobuf/proto"
-	"github.com/hyperledger/fabric/core/handlers/endorsement/api"
-	"github.com/hyperledger/fabric/core/handlers/validation/api"
-	"github.com/hyperledger/fabric/protos/peer"
+	"deepchain/core/handlers/endorsement/api"
+	"deepchain/core/handlers/validation/api"
+	"deepchain/protos/peer"
 	"github.com/stretchr/testify/assert"
 )
 
 const (
-	authPluginPackage      = "github.com/hyperledger/fabric/core/handlers/auth/plugin"
-	decoratorPluginPackage = "github.com/hyperledger/fabric/core/handlers/decoration/plugin"
-	endorsementTestPlugin  = "github.com/hyperledger/fabric/core/handlers/endorsement/testdata/"
-	validationTestPlugin   = "github.com/hyperledger/fabric/core/handlers/validation/testdata/"
+	authPluginPackage      = "deepchain/core/handlers/auth/plugin"
+	decoratorPluginPackage = "deepchain/core/handlers/decoration/plugin"
+	endorsementTestPlugin  = "deepchain/core/handlers/endorsement/testdata/"
+	validationTestPlugin   = "deepchain/core/handlers/validation/testdata/"
 )
 
 // raceEnabled is set to true when the race build tag is enabled.

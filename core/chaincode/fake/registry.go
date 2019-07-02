@@ -4,7 +4,7 @@ package fake
 import (
 	sync "sync"
 
-	chaincode "github.com/hyperledger/fabric/core/chaincode"
+	chaincode "deepchain/core/chaincode"
 )
 
 type Registry struct {

@@ -9,12 +9,12 @@ package discovery
 import (
 	"context"
 
-	"github.com/hyperledger/fabric/cmd/common"
-	"github.com/hyperledger/fabric/cmd/common/comm"
-	"github.com/hyperledger/fabric/cmd/common/signer"
-	"github.com/hyperledger/fabric/discovery/client"
-	. "github.com/hyperledger/fabric/protos/discovery"
-	"github.com/hyperledger/fabric/protos/utils"
+	"deepchain/cmd/common"
+	"deepchain/cmd/common/comm"
+	"deepchain/cmd/common/signer"
+	"deepchain/discovery/client"
+	. "deepchain/protos/discovery"
+	"deepchain/protos/utils"
 	"github.com/pkg/errors"
 )
 

@@ -8,12 +8,12 @@ package kvledger
 import (
 	"bytes"
 
-	"github.com/hyperledger/fabric/common/util"
-	"github.com/hyperledger/fabric/core/ledger"
-	"github.com/hyperledger/fabric/core/ledger/kvledger/txmgmt/rwsetutil"
-	"github.com/hyperledger/fabric/core/ledger/ledgerstorage"
-	"github.com/hyperledger/fabric/protos/ledger/rwset"
-	"github.com/hyperledger/fabric/protos/utils"
+	"deepchain/common/util"
+	"deepchain/core/ledger"
+	"deepchain/core/ledger/kvledger/txmgmt/rwsetutil"
+	"deepchain/core/ledger/ledgerstorage"
+	"deepchain/protos/ledger/rwset"
+	"deepchain/protos/utils"
 )
 
 // ConstructValidAndInvalidPvtData computes the valid pvt data and hash mismatch list

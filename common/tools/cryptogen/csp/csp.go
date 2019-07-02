@@ -15,9 +15,9 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/hyperledger/fabric/bccsp"
-	"github.com/hyperledger/fabric/bccsp/factory"
-	"github.com/hyperledger/fabric/bccsp/signer"
+	"deepchain/bccsp"
+	"deepchain/bccsp/factory"
+	"deepchain/bccsp/signer"
 	"github.com/pkg/errors"
 )
 

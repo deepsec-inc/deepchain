@@ -4,7 +4,7 @@ package mocks
 import (
 	sync "sync"
 
-	migration "github.com/hyperledger/fabric/orderer/consensus/migration"
+	migration "deepchain/orderer/consensus/migration"
 )
 
 type FakeMigrationController struct {

@@ -11,11 +11,11 @@ import (
 	"fmt"
 
 	"github.com/golang/protobuf/proto"
-	"github.com/hyperledger/fabric/common/crypto"
-	"github.com/hyperledger/fabric/peer/common"
-	common2 "github.com/hyperledger/fabric/protos/common"
-	pb "github.com/hyperledger/fabric/protos/peer"
-	"github.com/hyperledger/fabric/protos/utils"
+	"deepchain/common/crypto"
+	"deepchain/peer/common"
+	common2 "deepchain/protos/common"
+	pb "deepchain/protos/peer"
+	"deepchain/protos/utils"
 	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
 )

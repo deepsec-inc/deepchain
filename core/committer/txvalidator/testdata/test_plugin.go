@@ -10,12 +10,12 @@ import (
 	"testing"
 
 	"github.com/golang/protobuf/proto"
-	"github.com/hyperledger/fabric/core/handlers/validation/api"
-	. "github.com/hyperledger/fabric/core/handlers/validation/api/capabilities"
-	. "github.com/hyperledger/fabric/core/handlers/validation/api/identities"
-	. "github.com/hyperledger/fabric/core/handlers/validation/api/policies"
-	. "github.com/hyperledger/fabric/core/handlers/validation/api/state"
-	"github.com/hyperledger/fabric/protos/common"
+	"deepchain/core/handlers/validation/api"
+	. "deepchain/core/handlers/validation/api/capabilities"
+	. "deepchain/core/handlers/validation/api/identities"
+	. "deepchain/core/handlers/validation/api/policies"
+	. "deepchain/core/handlers/validation/api/state"
+	"deepchain/protos/common"
 	"github.com/pkg/errors"
 	"github.com/stretchr/testify/assert"
 )

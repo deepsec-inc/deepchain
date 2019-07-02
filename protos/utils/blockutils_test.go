@@ -10,10 +10,10 @@ import (
 	"testing"
 
 	"github.com/golang/protobuf/proto"
-	configtxtest "github.com/hyperledger/fabric/common/configtx/test"
-	"github.com/hyperledger/fabric/protos/common"
-	cb "github.com/hyperledger/fabric/protos/common"
-	"github.com/hyperledger/fabric/protos/utils"
+	configtxtest "deepchain/common/configtx/test"
+	"deepchain/protos/common"
+	cb "deepchain/protos/common"
+	"deepchain/protos/utils"
 	"github.com/stretchr/testify/assert"
 )
 

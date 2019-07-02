@@ -6,7 +6,7 @@ SPDX-License-Identifier: Apache-2.0
 package server
 
 import (
-	"github.com/hyperledger/fabric/core/peer"
+	"deepchain/core/peer"
 	"github.com/pkg/errors"
 )
 

@@ -21,7 +21,7 @@ import (
 	"hash"
 	"reflect"
 
-	"github.com/hyperledger/fabric/bccsp"
+	"deepchain/bccsp"
 )
 
 type Encryptor struct {

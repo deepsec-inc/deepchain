@@ -23,11 +23,11 @@ import (
 	"testing"
 
 	"github.com/golang/protobuf/proto"
-	"github.com/hyperledger/fabric/msp"
-	msptesttools "github.com/hyperledger/fabric/msp/mgmt/testtools"
-	"github.com/hyperledger/fabric/peer/common"
-	pcommon "github.com/hyperledger/fabric/protos/common"
-	pb "github.com/hyperledger/fabric/protos/peer"
+	"deepchain/msp"
+	msptesttools "deepchain/msp/mgmt/testtools"
+	"deepchain/peer/common"
+	pcommon "deepchain/protos/common"
+	pb "deepchain/protos/peer"
 )
 
 func TestMain(m *testing.M) {

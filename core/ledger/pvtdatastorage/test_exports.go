@@ -10,8 +10,8 @@ import (
 	"os"
 	"testing"
 
-	"github.com/hyperledger/fabric/core/ledger/ledgerconfig"
-	"github.com/hyperledger/fabric/core/ledger/pvtdatapolicy"
+	"deepchain/core/ledger/ledgerconfig"
+	"deepchain/core/ledger/pvtdatapolicy"
 	"github.com/stretchr/testify/assert"
 )
 

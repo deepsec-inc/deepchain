@@ -10,17 +10,17 @@ import (
 	"fmt"
 	"regexp"
 
-	commonerrors "github.com/hyperledger/fabric/common/errors"
-	"github.com/hyperledger/fabric/common/flogging"
-	"github.com/hyperledger/fabric/core/chaincode/platforms/ccmetadata"
-	. "github.com/hyperledger/fabric/core/common/validation/statebased"
-	. "github.com/hyperledger/fabric/core/handlers/validation/api/capabilities"
-	. "github.com/hyperledger/fabric/core/handlers/validation/api/identities"
-	. "github.com/hyperledger/fabric/core/handlers/validation/api/policies"
-	. "github.com/hyperledger/fabric/core/handlers/validation/api/state"
-	"github.com/hyperledger/fabric/protos/common"
-	"github.com/hyperledger/fabric/protos/peer"
-	"github.com/hyperledger/fabric/protos/utils"
+	commonerrors "deepchain/common/errors"
+	"deepchain/common/flogging"
+	"deepchain/core/chaincode/platforms/ccmetadata"
+	. "deepchain/core/common/validation/statebased"
+	. "deepchain/core/handlers/validation/api/capabilities"
+	. "deepchain/core/handlers/validation/api/identities"
+	. "deepchain/core/handlers/validation/api/policies"
+	. "deepchain/core/handlers/validation/api/state"
+	"deepchain/protos/common"
+	"deepchain/protos/peer"
+	"deepchain/protos/utils"
 )
 
 var logger = flogging.MustGetLogger("vscc")

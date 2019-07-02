@@ -11,7 +11,7 @@ import (
 	"sync"
 
 	"github.com/golang/protobuf/proto"
-	pb "github.com/hyperledger/fabric/protos/peer"
+	pb "deepchain/protos/peer"
 	"github.com/pkg/errors"
 )
 

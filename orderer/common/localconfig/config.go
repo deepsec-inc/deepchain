@@ -10,10 +10,10 @@ import (
 	"time"
 
 	"github.com/Shopify/sarama"
-	bccsp "github.com/hyperledger/fabric/bccsp/factory"
-	"github.com/hyperledger/fabric/common/flogging"
-	"github.com/hyperledger/fabric/common/viperutil"
-	coreconfig "github.com/hyperledger/fabric/core/config"
+	bccsp "deepchain/bccsp/factory"
+	"deepchain/common/flogging"
+	"deepchain/common/viperutil"
+	coreconfig "deepchain/core/config"
 	"github.com/spf13/viper"
 )
 

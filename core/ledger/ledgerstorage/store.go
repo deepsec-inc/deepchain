@@ -9,15 +9,15 @@ package ledgerstorage
 import (
 	"sync"
 
-	"github.com/hyperledger/fabric/common/flogging"
-	"github.com/hyperledger/fabric/common/ledger/blkstorage"
-	"github.com/hyperledger/fabric/common/ledger/blkstorage/fsblkstorage"
-	"github.com/hyperledger/fabric/core/ledger"
-	"github.com/hyperledger/fabric/core/ledger/ledgerconfig"
-	"github.com/hyperledger/fabric/core/ledger/pvtdatapolicy"
-	"github.com/hyperledger/fabric/core/ledger/pvtdatastorage"
-	lutil "github.com/hyperledger/fabric/core/ledger/util"
-	"github.com/hyperledger/fabric/protos/common"
+	"deepchain/common/flogging"
+	"deepchain/common/ledger/blkstorage"
+	"deepchain/common/ledger/blkstorage/fsblkstorage"
+	"deepchain/core/ledger"
+	"deepchain/core/ledger/ledgerconfig"
+	"deepchain/core/ledger/pvtdatapolicy"
+	"deepchain/core/ledger/pvtdatastorage"
+	lutil "deepchain/core/ledger/util"
+	"deepchain/protos/common"
 	"github.com/pkg/errors"
 )
 

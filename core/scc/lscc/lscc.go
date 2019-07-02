@@ -11,27 +11,27 @@ import (
 	"regexp"
 
 	"github.com/golang/protobuf/proto"
-	"github.com/hyperledger/fabric/common/cauthdsl"
-	"github.com/hyperledger/fabric/common/flogging"
-	"github.com/hyperledger/fabric/core/aclmgmt"
-	"github.com/hyperledger/fabric/core/aclmgmt/resources"
-	"github.com/hyperledger/fabric/core/chaincode/platforms"
-	"github.com/hyperledger/fabric/core/chaincode/platforms/ccmetadata"
-	"github.com/hyperledger/fabric/core/chaincode/shim"
-	"github.com/hyperledger/fabric/core/common/ccprovider"
-	"github.com/hyperledger/fabric/core/common/privdata"
-	"github.com/hyperledger/fabric/core/common/sysccprovider"
-	"github.com/hyperledger/fabric/core/ledger"
-	"github.com/hyperledger/fabric/core/ledger/cceventmgmt"
-	"github.com/hyperledger/fabric/core/peer"
-	"github.com/hyperledger/fabric/core/policy"
-	"github.com/hyperledger/fabric/core/policyprovider"
-	"github.com/hyperledger/fabric/msp"
-	"github.com/hyperledger/fabric/msp/mgmt"
-	"github.com/hyperledger/fabric/protos/common"
-	mb "github.com/hyperledger/fabric/protos/msp"
-	pb "github.com/hyperledger/fabric/protos/peer"
-	"github.com/hyperledger/fabric/protos/utils"
+	"deepchain/common/cauthdsl"
+	"deepchain/common/flogging"
+	"deepchain/core/aclmgmt"
+	"deepchain/core/aclmgmt/resources"
+	"deepchain/core/chaincode/platforms"
+	"deepchain/core/chaincode/platforms/ccmetadata"
+	"deepchain/core/chaincode/shim"
+	"deepchain/core/common/ccprovider"
+	"deepchain/core/common/privdata"
+	"deepchain/core/common/sysccprovider"
+	"deepchain/core/ledger"
+	"deepchain/core/ledger/cceventmgmt"
+	"deepchain/core/peer"
+	"deepchain/core/policy"
+	"deepchain/core/policyprovider"
+	"deepchain/msp"
+	"deepchain/msp/mgmt"
+	"deepchain/protos/common"
+	mb "deepchain/protos/msp"
+	pb "deepchain/protos/peer"
+	"deepchain/protos/utils"
 	"github.com/pkg/errors"
 )
 
@@ -154,7 +154,7 @@ func New(sccp sysccprovider.SystemChaincodeProvider, ACLProvider aclmgmt.ACLProv
 }
 
 func (lscc *LifeCycleSysCC) Name() string              { return "lscc" }
-func (lscc *LifeCycleSysCC) Path() string              { return "github.com/hyperledger/fabric/core/scc/lscc" }
+func (lscc *LifeCycleSysCC) Path() string              { return "deepchain/core/scc/lscc" }
 func (lscc *LifeCycleSysCC) InitArgs() [][]byte        { return nil }
 func (lscc *LifeCycleSysCC) Chaincode() shim.Chaincode { return lscc }
 func (lscc *LifeCycleSysCC) InvokableExternal() bool   { return true }

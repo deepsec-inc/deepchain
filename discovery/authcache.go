@@ -11,8 +11,8 @@ import (
 	"encoding/hex"
 	"sync"
 
-	"github.com/hyperledger/fabric/common/util"
-	"github.com/hyperledger/fabric/protos/common"
+	"deepchain/common/util"
+	"deepchain/protos/common"
 	"github.com/pkg/errors"
 )
 

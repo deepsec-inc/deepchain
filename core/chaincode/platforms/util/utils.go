@@ -26,9 +26,9 @@ import (
 	"path/filepath"
 
 	docker "github.com/fsouza/go-dockerclient"
-	"github.com/hyperledger/fabric/common/flogging"
-	"github.com/hyperledger/fabric/common/util"
-	cutil "github.com/hyperledger/fabric/core/container/util"
+	"deepchain/common/flogging"
+	"deepchain/common/util"
+	cutil "deepchain/core/container/util"
 )
 
 var logger = flogging.MustGetLogger("chaincode.platform.util")

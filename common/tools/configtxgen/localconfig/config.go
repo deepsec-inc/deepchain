@@ -12,12 +12,12 @@ import (
 	"strings"
 	"time"
 
-	"github.com/hyperledger/fabric/common/flogging"
-	"github.com/hyperledger/fabric/common/policies"
-	"github.com/hyperledger/fabric/common/viperutil"
-	cf "github.com/hyperledger/fabric/core/config"
-	"github.com/hyperledger/fabric/msp"
-	"github.com/hyperledger/fabric/protos/orderer/etcdraft"
+	"deepchain/common/flogging"
+	"deepchain/common/policies"
+	"deepchain/common/viperutil"
+	cf "deepchain/core/config"
+	"deepchain/msp"
+	"deepchain/protos/orderer/etcdraft"
 	"github.com/spf13/viper"
 )
 

@@ -9,11 +9,11 @@ package kvledger
 import (
 	"testing"
 
-	"github.com/hyperledger/fabric/common/ledger/testutil"
-	"github.com/hyperledger/fabric/common/metrics/disabled"
-	"github.com/hyperledger/fabric/core/ledger"
-	"github.com/hyperledger/fabric/core/ledger/mock"
-	"github.com/hyperledger/fabric/protos/ledger/rwset/kvrwset"
+	"deepchain/common/ledger/testutil"
+	"deepchain/common/metrics/disabled"
+	"deepchain/core/ledger"
+	"deepchain/core/ledger/mock"
+	"deepchain/protos/ledger/rwset/kvrwset"
 	"github.com/stretchr/testify/assert"
 )
 

@@ -10,7 +10,7 @@ import (
 	"runtime"
 	"time"
 
-	"github.com/hyperledger/fabric/common/metrics"
+	"deepchain/common/metrics"
 )
 
 type Collector struct {

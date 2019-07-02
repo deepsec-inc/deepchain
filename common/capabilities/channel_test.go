@@ -9,8 +9,8 @@ package capabilities
 import (
 	"testing"
 
-	"github.com/hyperledger/fabric/msp"
-	cb "github.com/hyperledger/fabric/protos/common"
+	"deepchain/msp"
+	cb "deepchain/protos/common"
 	"github.com/stretchr/testify/assert"
 )
 

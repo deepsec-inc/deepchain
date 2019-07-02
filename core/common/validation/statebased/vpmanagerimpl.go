@@ -10,10 +10,10 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/hyperledger/fabric/common/flogging"
-	"github.com/hyperledger/fabric/core/handlers/validation/api/state"
-	"github.com/hyperledger/fabric/core/ledger/kvledger/txmgmt/rwsetutil"
-	pb "github.com/hyperledger/fabric/protos/peer"
+	"deepchain/common/flogging"
+	"deepchain/core/handlers/validation/api/state"
+	"deepchain/core/ledger/kvledger/txmgmt/rwsetutil"
+	pb "deepchain/protos/peer"
 	"github.com/pkg/errors"
 )
 

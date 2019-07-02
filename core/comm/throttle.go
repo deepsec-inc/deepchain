@@ -9,7 +9,7 @@ package comm
 import (
 	"context"
 
-	"github.com/hyperledger/fabric/common/semaphore"
+	"deepchain/common/semaphore"
 	"google.golang.org/grpc"
 )
 

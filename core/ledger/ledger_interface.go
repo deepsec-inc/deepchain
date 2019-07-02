@@ -11,12 +11,12 @@ import (
 
 	"github.com/golang/protobuf/proto"
 	"github.com/hyperledger/fabric-lib-go/healthz"
-	commonledger "github.com/hyperledger/fabric/common/ledger"
-	"github.com/hyperledger/fabric/common/metrics"
-	"github.com/hyperledger/fabric/protos/common"
-	"github.com/hyperledger/fabric/protos/ledger/rwset"
-	"github.com/hyperledger/fabric/protos/ledger/rwset/kvrwset"
-	"github.com/hyperledger/fabric/protos/peer"
+	commonledger "deepchain/common/ledger"
+	"deepchain/common/metrics"
+	"deepchain/protos/common"
+	"deepchain/protos/ledger/rwset"
+	"deepchain/protos/ledger/rwset/kvrwset"
+	"deepchain/protos/peer"
 )
 
 // Initializer encapsulates dependencies for PeerLedgerProvider

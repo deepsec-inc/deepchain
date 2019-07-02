@@ -9,7 +9,7 @@ package common_test
 import (
 	"testing"
 
-	"github.com/hyperledger/fabric/peer/common"
+	"deepchain/peer/common"
 	"github.com/stretchr/testify/assert"
 )
 

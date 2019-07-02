@@ -19,9 +19,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/hyperledger/fabric/core/chaincode/platforms"
-	"github.com/hyperledger/fabric/core/config/configtest"
-	pb "github.com/hyperledger/fabric/protos/peer"
+	"deepchain/core/chaincode/platforms"
+	"deepchain/core/config/configtest"
+	pb "deepchain/protos/peer"
 	"github.com/spf13/viper"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
@@ -128,7 +128,7 @@ func Test_findSource(t *testing.T) {
 
 	var source SourceMap
 
-	source, err = findSource(gopath, "github.com/hyperledger/fabric/peer")
+	source, err = findSource(gopath, "deepchain/peer")
 	if err != nil {
 		t.Errorf("failed to find source: %s", err)
 	}
@@ -146,7 +146,7 @@ func Test_findSource(t *testing.T) {
 func Test_DeploymentPayload(t *testing.T) {
 	platform := &Platform{}
 
-	payload, err := platform.GetDeploymentPayload("github.com/hyperledger/fabric/examples/chaincode/go/example02/cmd")
+	payload, err := platform.GetDeploymentPayload("deepchain/examples/chaincode/go/example02/cmd")
 	assert.NoError(t, err)
 
 	t.Logf("payload size: %d", len(payload))
@@ -171,7 +171,7 @@ func Test_DeploymentPayload(t *testing.T) {
 func Test_DeploymentPayloadWithStateDBArtifacts(t *testing.T) {
 	platform := &Platform{}
 
-	payload, err := platform.GetDeploymentPayload("github.com/hyperledger/fabric/examples/chaincode/go/marbles02")
+	payload, err := platform.GetDeploymentPayload("deepchain/examples/chaincode/go/marbles02")
 	assert.NoError(t, err)
 
 	t.Logf("payload size: %d", len(payload))
@@ -231,8 +231,8 @@ func TestValidatePath(t *testing.T) {
 	}{
 		{path: "http://github.com/hyperledger/fabric/examples/chaincode/go/map", succ: true},
 		{path: "https://github.com/hyperledger/fabric/examples/chaincode/go/map", succ: true},
-		{path: "github.com/hyperledger/fabric/examples/chaincode/go/map", succ: true},
-		{path: "github.com/hyperledger/fabric/bad/chaincode/go/map", succ: false},
+		{path: "deepchain/examples/chaincode/go/map", succ: true},
+		{path: "deepchain/bad/chaincode/go/map", succ: false},
 		{path: ":github.com/hyperledger/fabric/examples/chaincode/go/map", succ: false},
 	}
 
@@ -273,8 +273,8 @@ func TestGetDeploymentPayload(t *testing.T) {
 		path   string
 		succ   bool
 	}{
-		{gopath: defaultGopath, path: "github.com/hyperledger/fabric/examples/chaincode/go/map", succ: true},
-		{gopath: defaultGopath, path: "github.com/hyperledger/fabric/examples/bad/go/map", succ: false},
+		{gopath: defaultGopath, path: "deepchain/examples/chaincode/go/map", succ: true},
+		{gopath: defaultGopath, path: "deepchain/examples/bad/go/map", succ: false},
 		{gopath: testdataPath, path: "chaincodes/BadImport", succ: false},
 		{gopath: testdataPath, path: "chaincodes/BadMetadataInvalidIndex", succ: false},
 		{gopath: testdataPath, path: "chaincodes/BadMetadataUnexpectedFolderContent", succ: false},
@@ -317,9 +317,9 @@ func TestGenerateDockerBuild(t *testing.T) {
 	}{
 		{gopath: defaultGopath, spec: spec{CCName: "NoCode", Path: "path/to/nowhere", File: "/bin/warez", Mode: 0100400, SuccessExpected: false}},
 		{gopath: defaultGopath, spec: spec{CCName: "invalidhttp", Path: "https://not/a/valid/path", SuccessExpected: false, RealGen: true}},
-		{gopath: defaultGopath, spec: spec{CCName: "map", Path: "github.com/hyperledger/fabric/examples/chaincode/go/map", SuccessExpected: true, RealGen: true}},
-		{gopath: defaultGopath, spec: spec{CCName: "mapBadPath", Path: "github.com/hyperledger/fabric/examples/chaincode/go/map", File: "/src/github.com/hyperledger/fabric/examples/bad/path/to/map.go", Mode: 0100400, SuccessExpected: false}},
-		{gopath: defaultGopath, spec: spec{CCName: "mapBadMode", Path: "github.com/hyperledger/fabric/examples/chaincode/go/map", File: "/src/github.com/hyperledger/fabric/examples/chaincode/go/map/map.go", Mode: 0100555, SuccessExpected: false}},
+		{gopath: defaultGopath, spec: spec{CCName: "map", Path: "deepchain/examples/chaincode/go/map", SuccessExpected: true, RealGen: true}},
+		{gopath: defaultGopath, spec: spec{CCName: "mapBadPath", Path: "deepchain/examples/chaincode/go/map", File: "/src/github.com/hyperledger/fabric/examples/bad/path/to/map.go", Mode: 0100400, SuccessExpected: false}},
+		{gopath: defaultGopath, spec: spec{CCName: "mapBadMode", Path: "deepchain/examples/chaincode/go/map", File: "/src/github.com/hyperledger/fabric/examples/chaincode/go/map/map.go", Mode: 0100555, SuccessExpected: false}},
 		{gopath: testdataPath, spec: spec{CCName: "AutoVendor", Path: "chaincodes/AutoVendor/chaincode", SuccessExpected: true, RealGen: true}},
 	}
 

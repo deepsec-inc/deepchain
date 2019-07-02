@@ -7,8 +7,8 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/hyperledger/fabric/common/flogging"
-	"github.com/hyperledger/fabric/protos/orderer"
+	"deepchain/common/flogging"
+	"deepchain/protos/orderer"
 )
 
 // Status provides access to the consensus-type migration status of the underlying chain.

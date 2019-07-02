@@ -19,7 +19,7 @@ package multichannel
 import (
 	"testing"
 
-	"github.com/hyperledger/fabric/orderer/consensus"
+	"deepchain/orderer/consensus"
 )
 
 func TestConsenterSupportInterface(t *testing.T) {

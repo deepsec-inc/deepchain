@@ -7,8 +7,8 @@ SPDX-License-Identifier: Apache-2.0
 package decorator
 
 import (
-	"github.com/hyperledger/fabric/core/handlers/decoration"
-	"github.com/hyperledger/fabric/protos/peer"
+	"deepchain/core/handlers/decoration"
+	"deepchain/protos/peer"
 )
 
 // NewDecorator creates a new decorator

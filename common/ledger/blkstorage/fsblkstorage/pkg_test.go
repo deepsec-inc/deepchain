@@ -22,9 +22,9 @@ import (
 	"os"
 	"testing"
 
-	"github.com/hyperledger/fabric/common/flogging"
-	"github.com/hyperledger/fabric/common/ledger/blkstorage"
-	"github.com/hyperledger/fabric/protos/common"
+	"deepchain/common/flogging"
+	"deepchain/common/ledger/blkstorage"
+	"deepchain/protos/common"
 	"github.com/stretchr/testify/assert"
 )
 

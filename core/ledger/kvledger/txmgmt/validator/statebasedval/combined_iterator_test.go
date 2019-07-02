@@ -19,9 +19,9 @@ package statebasedval
 import (
 	"testing"
 
-	"github.com/hyperledger/fabric/core/ledger/kvledger/txmgmt/statedb"
-	"github.com/hyperledger/fabric/core/ledger/kvledger/txmgmt/statedb/stateleveldb"
-	"github.com/hyperledger/fabric/core/ledger/kvledger/txmgmt/version"
+	"deepchain/core/ledger/kvledger/txmgmt/statedb"
+	"deepchain/core/ledger/kvledger/txmgmt/statedb/stateleveldb"
+	"deepchain/core/ledger/kvledger/txmgmt/version"
 	"github.com/stretchr/testify/assert"
 )
 

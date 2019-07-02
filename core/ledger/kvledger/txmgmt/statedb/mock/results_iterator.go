@@ -4,7 +4,7 @@ package mock
 import (
 	"sync"
 
-	"github.com/hyperledger/fabric/core/ledger/kvledger/txmgmt/statedb"
+	"deepchain/core/ledger/kvledger/txmgmt/statedb"
 )
 
 type ResultsIterator struct {

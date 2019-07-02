@@ -15,12 +15,12 @@ import (
 	"testing"
 	"time"
 
-	"github.com/hyperledger/fabric/common/cauthdsl"
-	"github.com/hyperledger/fabric/core/handlers/validation/api/state"
-	"github.com/hyperledger/fabric/protos/ledger/rwset"
-	"github.com/hyperledger/fabric/protos/ledger/rwset/kvrwset"
-	pb "github.com/hyperledger/fabric/protos/peer"
-	"github.com/hyperledger/fabric/protos/utils"
+	"deepchain/common/cauthdsl"
+	"deepchain/core/handlers/validation/api/state"
+	"deepchain/protos/ledger/rwset"
+	"deepchain/protos/ledger/rwset/kvrwset"
+	pb "deepchain/protos/peer"
+	"deepchain/protos/utils"
 	"github.com/pkg/errors"
 	"github.com/stretchr/testify/assert"
 )

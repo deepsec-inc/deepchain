@@ -4,8 +4,8 @@ package mocks
 import (
 	"sync"
 
-	"github.com/hyperledger/fabric/orderer/consensus/etcdraft"
-	"github.com/hyperledger/fabric/protos/orderer"
+	"deepchain/orderer/consensus/etcdraft"
+	"deepchain/protos/orderer"
 )
 
 type FakeRPC struct {

@@ -6,14 +6,14 @@ SPDX-License-Identifier: Apache-2.0
 package statebasedval
 
 import (
-	"github.com/hyperledger/fabric/common/flogging"
-	"github.com/hyperledger/fabric/core/ledger/kvledger/txmgmt/privacyenabledstate"
-	"github.com/hyperledger/fabric/core/ledger/kvledger/txmgmt/rwsetutil"
-	"github.com/hyperledger/fabric/core/ledger/kvledger/txmgmt/statedb"
-	"github.com/hyperledger/fabric/core/ledger/kvledger/txmgmt/validator/internal"
-	"github.com/hyperledger/fabric/core/ledger/kvledger/txmgmt/version"
-	"github.com/hyperledger/fabric/protos/ledger/rwset/kvrwset"
-	"github.com/hyperledger/fabric/protos/peer"
+	"deepchain/common/flogging"
+	"deepchain/core/ledger/kvledger/txmgmt/privacyenabledstate"
+	"deepchain/core/ledger/kvledger/txmgmt/rwsetutil"
+	"deepchain/core/ledger/kvledger/txmgmt/statedb"
+	"deepchain/core/ledger/kvledger/txmgmt/validator/internal"
+	"deepchain/core/ledger/kvledger/txmgmt/version"
+	"deepchain/protos/ledger/rwset/kvrwset"
+	"deepchain/protos/peer"
 )
 
 var logger = flogging.MustGetLogger("statebasedval")

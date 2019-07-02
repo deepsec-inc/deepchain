@@ -21,9 +21,9 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/hyperledger/fabric/bccsp"
-	"github.com/hyperledger/fabric/bccsp/mocks"
-	mocks2 "github.com/hyperledger/fabric/bccsp/sw/mocks"
+	"deepchain/bccsp"
+	"deepchain/bccsp/mocks"
+	mocks2 "deepchain/bccsp/sw/mocks"
 	"github.com/stretchr/testify/assert"
 )
 

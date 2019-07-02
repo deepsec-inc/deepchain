@@ -23,10 +23,10 @@ import (
 	"time"
 
 	pb "github.com/golang/protobuf/proto"
-	"github.com/hyperledger/fabric/core/deliverservice/blocksprovider"
-	"github.com/hyperledger/fabric/protos/common"
-	proto "github.com/hyperledger/fabric/protos/gossip"
-	"github.com/hyperledger/fabric/protos/orderer"
+	"deepchain/core/deliverservice/blocksprovider"
+	"deepchain/protos/common"
+	proto "deepchain/protos/gossip"
+	"deepchain/protos/orderer"
 	"github.com/stretchr/testify/assert"
 )
 

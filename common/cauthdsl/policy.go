@@ -11,10 +11,10 @@ import (
 	"fmt"
 
 	"github.com/golang/protobuf/proto"
-	"github.com/hyperledger/fabric/common/policies"
-	"github.com/hyperledger/fabric/msp"
-	cb "github.com/hyperledger/fabric/protos/common"
-	mspp "github.com/hyperledger/fabric/protos/msp"
+	"deepchain/common/policies"
+	"deepchain/msp"
+	cb "deepchain/protos/common"
+	mspp "deepchain/protos/msp"
 )
 
 type Identity interface {

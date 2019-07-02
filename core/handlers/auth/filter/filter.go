@@ -9,8 +9,8 @@ package filter
 import (
 	"context"
 
-	"github.com/hyperledger/fabric/core/handlers/auth"
-	"github.com/hyperledger/fabric/protos/peer"
+	"deepchain/core/handlers/auth"
+	"deepchain/protos/peer"
 )
 
 // NewFilter creates a new Filter

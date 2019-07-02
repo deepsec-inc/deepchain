@@ -19,7 +19,7 @@ package update
 import (
 	"testing"
 
-	cb "github.com/hyperledger/fabric/protos/common"
+	cb "deepchain/protos/common"
 	"github.com/stretchr/testify/assert"
 )
 

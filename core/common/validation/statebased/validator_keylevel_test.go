@@ -10,13 +10,13 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/hyperledger/fabric/common/errors"
-	"github.com/hyperledger/fabric/core/ledger"
-	"github.com/hyperledger/fabric/core/ledger/kvledger/txmgmt/rwsetutil"
-	"github.com/hyperledger/fabric/core/ledger/kvledger/txmgmt/version"
-	"github.com/hyperledger/fabric/protos/common"
-	pb "github.com/hyperledger/fabric/protos/peer"
-	"github.com/hyperledger/fabric/protos/utils"
+	"deepchain/common/errors"
+	"deepchain/core/ledger"
+	"deepchain/core/ledger/kvledger/txmgmt/rwsetutil"
+	"deepchain/core/ledger/kvledger/txmgmt/version"
+	"deepchain/protos/common"
+	pb "deepchain/protos/peer"
+	"deepchain/protos/utils"
 	"github.com/stretchr/testify/assert"
 )
 

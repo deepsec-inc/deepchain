@@ -14,9 +14,9 @@ import (
 	"time"
 
 	"github.com/golang/protobuf/proto"
-	"github.com/hyperledger/fabric/protos/discovery"
-	"github.com/hyperledger/fabric/protos/gossip"
-	"github.com/hyperledger/fabric/protos/msp"
+	"deepchain/protos/discovery"
+	"deepchain/protos/gossip"
+	"deepchain/protos/msp"
 	"github.com/pkg/errors"
 )
 

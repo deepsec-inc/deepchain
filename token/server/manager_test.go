@@ -9,9 +9,9 @@ package server_test
 import (
 	"errors"
 
-	"github.com/hyperledger/fabric/token/ledger/mock"
-	"github.com/hyperledger/fabric/token/server"
-	"github.com/hyperledger/fabric/token/tms/plain"
+	"deepchain/token/ledger/mock"
+	"deepchain/token/server"
+	"deepchain/token/tms/plain"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )

@@ -15,10 +15,10 @@ import (
 	"fmt"
 
 	"github.com/golang/protobuf/proto"
-	"github.com/hyperledger/fabric/bccsp"
-	"github.com/hyperledger/fabric/bccsp/factory"
-	"github.com/hyperledger/fabric/bccsp/signer"
-	m "github.com/hyperledger/fabric/protos/msp"
+	"deepchain/bccsp"
+	"deepchain/bccsp/factory"
+	"deepchain/bccsp/signer"
+	m "deepchain/protos/msp"
 	"github.com/pkg/errors"
 )
 

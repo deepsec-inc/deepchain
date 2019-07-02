@@ -11,9 +11,9 @@ import (
 	"errors"
 	"fmt"
 
-	protcommon "github.com/hyperledger/fabric/protos/common"
-	pb "github.com/hyperledger/fabric/protos/peer"
-	"github.com/hyperledger/fabric/protos/utils"
+	protcommon "deepchain/protos/common"
+	pb "deepchain/protos/peer"
+	"deepchain/protos/utils"
 	"github.com/spf13/cobra"
 )
 

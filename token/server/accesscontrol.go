@@ -7,8 +7,8 @@ SPDX-License-Identifier: Apache-2.0
 package server
 
 import (
-	"github.com/hyperledger/fabric/protos/common"
-	"github.com/hyperledger/fabric/protos/token"
+	"deepchain/protos/common"
+	"deepchain/protos/token"
 	"github.com/pkg/errors"
 )
 

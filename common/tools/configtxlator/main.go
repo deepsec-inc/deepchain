@@ -15,17 +15,17 @@ import (
 	"reflect"
 
 	"github.com/golang/protobuf/proto"
-	"github.com/hyperledger/fabric/common/flogging"
-	"github.com/hyperledger/fabric/common/tools/configtxlator/metadata"
-	"github.com/hyperledger/fabric/common/tools/configtxlator/rest"
-	"github.com/hyperledger/fabric/common/tools/configtxlator/update"
-	"github.com/hyperledger/fabric/common/tools/protolator"
-	_ "github.com/hyperledger/fabric/protos/common"
-	cb "github.com/hyperledger/fabric/protos/common" // Import these to register the proto types
-	_ "github.com/hyperledger/fabric/protos/msp"
-	_ "github.com/hyperledger/fabric/protos/orderer"
-	_ "github.com/hyperledger/fabric/protos/orderer/etcdraft"
-	_ "github.com/hyperledger/fabric/protos/peer"
+	"deepchain/common/flogging"
+	"deepchain/common/tools/configtxlator/metadata"
+	"deepchain/common/tools/configtxlator/rest"
+	"deepchain/common/tools/configtxlator/update"
+	"deepchain/common/tools/protolator"
+	_ "deepchain/protos/common"
+	cb "deepchain/protos/common" // Import these to register the proto types
+	_ "deepchain/protos/msp"
+	_ "deepchain/protos/orderer"
+	_ "deepchain/protos/orderer/etcdraft"
+	_ "deepchain/protos/peer"
 
 	"github.com/gorilla/handlers"
 	"github.com/pkg/errors"

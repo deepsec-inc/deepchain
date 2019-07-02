@@ -18,7 +18,7 @@ package sw
 import (
 	"errors"
 
-	"github.com/hyperledger/fabric/bccsp"
+	"deepchain/bccsp"
 )
 
 // NewDummyKeyStore instantiate a dummy key store

@@ -9,9 +9,9 @@ package msgprocessor
 import (
 	"time"
 
-	"github.com/hyperledger/fabric/common/channelconfig"
-	"github.com/hyperledger/fabric/common/crypto"
-	"github.com/hyperledger/fabric/protos/common"
+	"deepchain/common/channelconfig"
+	"deepchain/common/crypto"
+	"deepchain/protos/common"
 	"github.com/pkg/errors"
 )
 

@@ -7,9 +7,9 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/hyperledger/fabric/orderer/consensus/migration"
-	"github.com/hyperledger/fabric/orderer/consensus/mocks"
-	"github.com/hyperledger/fabric/protos/orderer"
+	"deepchain/orderer/consensus/migration"
+	"deepchain/orderer/consensus/mocks"
+	"deepchain/protos/orderer"
 	"github.com/stretchr/testify/assert"
 )
 

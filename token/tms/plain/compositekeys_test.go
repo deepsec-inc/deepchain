@@ -9,7 +9,7 @@ package plain
 import (
 	"strconv"
 
-	"github.com/hyperledger/fabric/core/chaincode/shim"
+	"deepchain/core/chaincode/shim"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )

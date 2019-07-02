@@ -20,12 +20,12 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/hyperledger/fabric/common/ledger/blkstorage"
-	"github.com/hyperledger/fabric/common/ledger/testutil"
-	"github.com/hyperledger/fabric/core/ledger/util"
-	"github.com/hyperledger/fabric/protos/common"
-	"github.com/hyperledger/fabric/protos/peer"
-	putil "github.com/hyperledger/fabric/protos/utils"
+	"deepchain/common/ledger/blkstorage"
+	"deepchain/common/ledger/testutil"
+	"deepchain/core/ledger/util"
+	"deepchain/protos/common"
+	"deepchain/protos/peer"
+	putil "deepchain/protos/utils"
 	"github.com/stretchr/testify/assert"
 )
 

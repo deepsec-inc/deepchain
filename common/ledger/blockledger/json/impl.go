@@ -14,10 +14,10 @@ import (
 	"sync"
 
 	"github.com/golang/protobuf/jsonpb"
-	"github.com/hyperledger/fabric/common/flogging"
-	"github.com/hyperledger/fabric/common/ledger/blockledger"
-	cb "github.com/hyperledger/fabric/protos/common"
-	ab "github.com/hyperledger/fabric/protos/orderer"
+	"deepchain/common/flogging"
+	"deepchain/common/ledger/blockledger"
+	cb "deepchain/protos/common"
+	ab "deepchain/protos/orderer"
 	"github.com/pkg/errors"
 )
 

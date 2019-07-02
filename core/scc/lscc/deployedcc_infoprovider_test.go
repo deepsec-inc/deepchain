@@ -10,12 +10,12 @@ import (
 	"testing"
 
 	"github.com/golang/protobuf/proto"
-	"github.com/hyperledger/fabric/core/common/ccprovider"
-	"github.com/hyperledger/fabric/core/common/privdata"
-	"github.com/hyperledger/fabric/core/ledger"
-	"github.com/hyperledger/fabric/core/scc/lscc"
-	"github.com/hyperledger/fabric/core/scc/lscc/mock"
-	"github.com/hyperledger/fabric/protos/common"
+	"deepchain/core/common/ccprovider"
+	"deepchain/core/common/privdata"
+	"deepchain/core/ledger"
+	"deepchain/core/scc/lscc"
+	"deepchain/core/scc/lscc/mock"
+	"deepchain/protos/common"
 	"github.com/stretchr/testify/assert"
 )
 

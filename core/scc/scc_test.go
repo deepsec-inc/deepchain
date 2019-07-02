@@ -11,10 +11,10 @@ import (
 	"os"
 	"testing"
 
-	"github.com/hyperledger/fabric/core/container/inproccontroller"
-	"github.com/hyperledger/fabric/core/ledger/ledgermgmt"
-	ccprovider2 "github.com/hyperledger/fabric/core/mocks/ccprovider"
-	"github.com/hyperledger/fabric/core/peer"
+	"deepchain/core/container/inproccontroller"
+	"deepchain/core/ledger/ledgermgmt"
+	ccprovider2 "deepchain/core/mocks/ccprovider"
+	"deepchain/core/peer"
 	"github.com/spf13/viper"
 	"github.com/stretchr/testify/assert"
 )

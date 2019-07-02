@@ -4,7 +4,7 @@ package mock
 import (
 	"sync"
 
-	"github.com/hyperledger/fabric/core/ledger"
+	"deepchain/core/ledger"
 )
 
 type StateListener struct {

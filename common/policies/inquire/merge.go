@@ -9,7 +9,7 @@ package inquire
 import (
 	"reflect"
 
-	"github.com/hyperledger/fabric/common/policies"
+	"deepchain/common/policies"
 )
 
 // ComparablePrincipalSets aggregate ComparablePrincipalSets

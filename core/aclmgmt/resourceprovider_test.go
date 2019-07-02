@@ -21,11 +21,11 @@ import (
 	"testing"
 
 	"github.com/golang/protobuf/proto"
-	"github.com/hyperledger/fabric/common/localmsp"
-	"github.com/hyperledger/fabric/msp/mgmt/testtools"
-	"github.com/hyperledger/fabric/protos/common"
-	"github.com/hyperledger/fabric/protos/peer"
-	"github.com/hyperledger/fabric/protos/utils"
+	"deepchain/common/localmsp"
+	"deepchain/msp/mgmt/testtools"
+	"deepchain/protos/common"
+	"deepchain/protos/peer"
+	"deepchain/protos/utils"
 	"github.com/stretchr/testify/assert"
 )
 

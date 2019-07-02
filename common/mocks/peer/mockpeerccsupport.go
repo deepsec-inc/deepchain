@@ -19,7 +19,7 @@ package peer
 import (
 	"fmt"
 
-	pb "github.com/hyperledger/fabric/protos/peer"
+	pb "deepchain/protos/peer"
 )
 
 //MockPeerCCSupport provides CC support for peer interfaces.

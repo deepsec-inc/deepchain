@@ -7,17 +7,17 @@ SPDX-License-Identifier: Apache-2.0
 package historyleveldb
 
 import (
-	"github.com/hyperledger/fabric/common/flogging"
-	"github.com/hyperledger/fabric/common/ledger/blkstorage"
-	"github.com/hyperledger/fabric/common/ledger/util/leveldbhelper"
-	"github.com/hyperledger/fabric/core/ledger"
-	"github.com/hyperledger/fabric/core/ledger/kvledger/history/historydb"
-	"github.com/hyperledger/fabric/core/ledger/kvledger/txmgmt/rwsetutil"
-	"github.com/hyperledger/fabric/core/ledger/kvledger/txmgmt/version"
-	"github.com/hyperledger/fabric/core/ledger/ledgerconfig"
-	"github.com/hyperledger/fabric/core/ledger/util"
-	"github.com/hyperledger/fabric/protos/common"
-	putils "github.com/hyperledger/fabric/protos/utils"
+	"deepchain/common/flogging"
+	"deepchain/common/ledger/blkstorage"
+	"deepchain/common/ledger/util/leveldbhelper"
+	"deepchain/core/ledger"
+	"deepchain/core/ledger/kvledger/history/historydb"
+	"deepchain/core/ledger/kvledger/txmgmt/rwsetutil"
+	"deepchain/core/ledger/kvledger/txmgmt/version"
+	"deepchain/core/ledger/ledgerconfig"
+	"deepchain/core/ledger/util"
+	"deepchain/protos/common"
+	putils "deepchain/protos/utils"
 )
 
 var logger = flogging.MustGetLogger("historyleveldb")

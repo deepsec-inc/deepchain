@@ -21,8 +21,8 @@ import (
 	"fmt"
 	"io/ioutil"
 
-	"github.com/hyperledger/fabric/peer/common"
-	"github.com/hyperledger/fabric/protos/utils"
+	"deepchain/peer/common"
+	"deepchain/protos/utils"
 	"github.com/spf13/cobra"
 )
 

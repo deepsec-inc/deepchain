@@ -14,10 +14,10 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/hyperledger/fabric/core/comm"
-	"github.com/hyperledger/fabric/core/deliverservice/blocksprovider"
-	"github.com/hyperledger/fabric/protos/common"
-	"github.com/hyperledger/fabric/protos/orderer"
+	"deepchain/core/comm"
+	"deepchain/core/deliverservice/blocksprovider"
+	"deepchain/protos/common"
+	"deepchain/protos/orderer"
 	"google.golang.org/grpc"
 )
 

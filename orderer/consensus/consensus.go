@@ -7,12 +7,12 @@ SPDX-License-Identifier: Apache-2.0
 package consensus
 
 import (
-	"github.com/hyperledger/fabric/common/channelconfig"
-	"github.com/hyperledger/fabric/common/crypto"
-	"github.com/hyperledger/fabric/orderer/common/blockcutter"
-	"github.com/hyperledger/fabric/orderer/common/msgprocessor"
-	"github.com/hyperledger/fabric/orderer/consensus/migration"
-	cb "github.com/hyperledger/fabric/protos/common"
+	"deepchain/common/channelconfig"
+	"deepchain/common/crypto"
+	"deepchain/orderer/common/blockcutter"
+	"deepchain/orderer/common/msgprocessor"
+	"deepchain/orderer/consensus/migration"
+	cb "deepchain/protos/common"
 )
 
 // Consenter defines the backing ordering mechanism.

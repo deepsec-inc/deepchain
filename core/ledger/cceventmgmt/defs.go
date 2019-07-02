@@ -9,8 +9,8 @@ package cceventmgmt
 import (
 	"fmt"
 
-	"github.com/hyperledger/fabric/core/ledger"
-	"github.com/hyperledger/fabric/protos/common"
+	"deepchain/core/ledger"
+	"deepchain/protos/common"
 )
 
 // ChaincodeDefinition captures the info about chaincode

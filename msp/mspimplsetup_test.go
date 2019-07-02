@@ -10,7 +10,7 @@ import (
 	"crypto/x509"
 	"testing"
 
-	"github.com/hyperledger/fabric/protos/msp"
+	"deepchain/protos/msp"
 
 	"github.com/onsi/gomega"
 )

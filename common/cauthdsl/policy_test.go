@@ -11,8 +11,8 @@ import (
 	"testing"
 
 	"github.com/golang/protobuf/proto"
-	"github.com/hyperledger/fabric/common/policies"
-	cb "github.com/hyperledger/fabric/protos/common"
+	"deepchain/common/policies"
+	cb "deepchain/protos/common"
 	"github.com/stretchr/testify/assert"
 )
 

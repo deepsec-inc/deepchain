@@ -7,9 +7,9 @@ SPDX-License-Identifier: Apache-2.0
 package container_test
 
 import (
-	"github.com/hyperledger/fabric/core/container"
-	"github.com/hyperledger/fabric/core/container/ccintf"
-	"github.com/hyperledger/fabric/core/container/mock"
+	"deepchain/core/container"
+	"deepchain/core/container/ccintf"
+	"deepchain/core/container/mock"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 	"github.com/pkg/errors"

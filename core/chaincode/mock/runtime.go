@@ -4,7 +4,7 @@ package mock
 import (
 	sync "sync"
 
-	ccprovider "github.com/hyperledger/fabric/core/common/ccprovider"
+	ccprovider "deepchain/core/common/ccprovider"
 )
 
 type Runtime struct {

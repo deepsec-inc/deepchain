@@ -20,10 +20,10 @@ import (
 	"io/ioutil"
 	"os"
 
-	. "github.com/hyperledger/fabric/common/ledger/blockledger"
-	jsonledger "github.com/hyperledger/fabric/common/ledger/blockledger/json"
-	genesisconfig "github.com/hyperledger/fabric/common/tools/configtxgen/localconfig"
-	cb "github.com/hyperledger/fabric/protos/common"
+	. "deepchain/common/ledger/blockledger"
+	jsonledger "deepchain/common/ledger/blockledger/json"
+	genesisconfig "deepchain/common/tools/configtxgen/localconfig"
+	cb "deepchain/protos/common"
 )
 
 var genesisBlock = cb.NewBlock(0, nil)

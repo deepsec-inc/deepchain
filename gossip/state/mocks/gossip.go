@@ -7,13 +7,13 @@ SPDX-License-Identifier: Apache-2.0
 package mocks
 
 import (
-	"github.com/hyperledger/fabric/gossip/api"
-	"github.com/hyperledger/fabric/gossip/comm"
-	"github.com/hyperledger/fabric/gossip/common"
-	"github.com/hyperledger/fabric/gossip/discovery"
-	"github.com/hyperledger/fabric/gossip/filter"
-	"github.com/hyperledger/fabric/gossip/gossip"
-	proto "github.com/hyperledger/fabric/protos/gossip"
+	"deepchain/gossip/api"
+	"deepchain/gossip/comm"
+	"deepchain/gossip/common"
+	"deepchain/gossip/discovery"
+	"deepchain/gossip/filter"
+	"deepchain/gossip/gossip"
+	proto "deepchain/protos/gossip"
 	"github.com/stretchr/testify/mock"
 )
 

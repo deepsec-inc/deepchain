@@ -4,8 +4,8 @@ package mock
 import (
 	sync "sync"
 
-	ccprovider "github.com/hyperledger/fabric/core/common/ccprovider"
-	ledger "github.com/hyperledger/fabric/core/ledger"
+	ccprovider "deepchain/core/common/ccprovider"
+	ledger "deepchain/core/ledger"
 )
 
 type Lifecycle struct {

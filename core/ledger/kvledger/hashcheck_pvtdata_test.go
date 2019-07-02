@@ -12,10 +12,10 @@ import (
 	"testing"
 
 	"github.com/golang/protobuf/proto"
-	"github.com/hyperledger/fabric/common/ledger/testutil"
-	"github.com/hyperledger/fabric/core/ledger"
-	"github.com/hyperledger/fabric/core/ledger/kvledger/txmgmt/rwsetutil"
-	"github.com/hyperledger/fabric/protos/ledger/rwset"
+	"deepchain/common/ledger/testutil"
+	"deepchain/core/ledger"
+	"deepchain/core/ledger/kvledger/txmgmt/rwsetutil"
+	"deepchain/protos/ledger/rwset"
 	"github.com/stretchr/testify/assert"
 )
 

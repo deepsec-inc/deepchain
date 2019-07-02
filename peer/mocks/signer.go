@@ -11,8 +11,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/hyperledger/fabric/msp"
-	mspprotos "github.com/hyperledger/fabric/protos/msp"
+	"deepchain/msp"
+	mspprotos "deepchain/protos/msp"
 )
 
 type Signer struct {

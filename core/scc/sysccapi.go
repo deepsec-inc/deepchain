@@ -10,14 +10,14 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/hyperledger/fabric/common/flogging"
-	"github.com/hyperledger/fabric/common/util"
-	"github.com/hyperledger/fabric/core/chaincode/shim"
-	"github.com/hyperledger/fabric/core/common/ccprovider"
-	"github.com/hyperledger/fabric/core/container/ccintf"
-	"github.com/hyperledger/fabric/core/container/inproccontroller"
-	"github.com/hyperledger/fabric/core/peer"
-	pb "github.com/hyperledger/fabric/protos/peer"
+	"deepchain/common/flogging"
+	"deepchain/common/util"
+	"deepchain/core/chaincode/shim"
+	"deepchain/core/common/ccprovider"
+	"deepchain/core/container/ccintf"
+	"deepchain/core/container/inproccontroller"
+	"deepchain/core/peer"
+	pb "deepchain/protos/peer"
 	"github.com/spf13/viper"
 )
 

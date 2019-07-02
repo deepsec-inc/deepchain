@@ -12,11 +12,11 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/hyperledger/fabric/common/flogging"
-	"github.com/hyperledger/fabric/common/util"
-	"github.com/hyperledger/fabric/core/config/configtest"
-	"github.com/hyperledger/fabric/msp"
-	"github.com/hyperledger/fabric/peer/common"
+	"deepchain/common/flogging"
+	"deepchain/common/util"
+	"deepchain/core/config/configtest"
+	"deepchain/msp"
+	"deepchain/peer/common"
 	"github.com/spf13/viper"
 	"github.com/stretchr/testify/assert"
 )

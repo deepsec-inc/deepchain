@@ -4,8 +4,8 @@ package mocks
 import (
 	"sync"
 
-	"github.com/hyperledger/fabric/discovery/support/config"
-	"github.com/hyperledger/fabric/protos/common"
+	"deepchain/discovery/support/config"
+	"deepchain/protos/common"
 )
 
 type ConfigBlockGetter struct {

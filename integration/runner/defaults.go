@@ -9,7 +9,7 @@ package runner
 import (
 	"time"
 
-	"github.com/hyperledger/fabric/integration/helpers"
+	"deepchain/integration/helpers"
 )
 
 const DefaultStartTimeout = 30 * time.Second

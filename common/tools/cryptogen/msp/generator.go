@@ -12,11 +12,11 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/hyperledger/fabric/bccsp"
-	"github.com/hyperledger/fabric/bccsp/factory"
-	"github.com/hyperledger/fabric/common/tools/cryptogen/ca"
-	"github.com/hyperledger/fabric/common/tools/cryptogen/csp"
-	fabricmsp "github.com/hyperledger/fabric/msp"
+	"deepchain/bccsp"
+	"deepchain/bccsp/factory"
+	"deepchain/common/tools/cryptogen/ca"
+	"deepchain/common/tools/cryptogen/csp"
+	fabricmsp "deepchain/msp"
 	"gopkg.in/yaml.v2"
 )
 

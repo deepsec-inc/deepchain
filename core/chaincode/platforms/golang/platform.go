@@ -19,11 +19,11 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/hyperledger/fabric/core/chaincode/platforms"
-	"github.com/hyperledger/fabric/core/chaincode/platforms/ccmetadata"
-	"github.com/hyperledger/fabric/core/chaincode/platforms/util"
-	cutil "github.com/hyperledger/fabric/core/container/util"
-	pb "github.com/hyperledger/fabric/protos/peer"
+	"deepchain/core/chaincode/platforms"
+	"deepchain/core/chaincode/platforms/ccmetadata"
+	"deepchain/core/chaincode/platforms/util"
+	cutil "deepchain/core/container/util"
+	pb "deepchain/protos/peer"
 	"github.com/pkg/errors"
 	"github.com/spf13/viper"
 )
@@ -284,8 +284,8 @@ func (goPlatform *Platform) GetDeploymentPayload(path string) ([]byte, error) {
 	// Remove any imports that are provided by the ccenv or system
 	// --------------------------------------------------------------------------------------
 	var provided = map[string]bool{
-		"github.com/hyperledger/fabric/core/chaincode/shim": true,
-		"github.com/hyperledger/fabric/protos/peer":         true,
+		"deepchain/core/chaincode/shim": true,
+		"deepchain/protos/peer":         true,
 	}
 
 	// Golang "pseudo-packages" - packages which don't actually exist

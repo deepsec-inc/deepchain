@@ -11,12 +11,12 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/hyperledger/fabric/common/ledger/blkstorage/fsblkstorage"
-	"github.com/hyperledger/fabric/common/ledger/blockledger"
-	"github.com/hyperledger/fabric/common/ledger/blockledger/file"
-	"github.com/hyperledger/fabric/common/ledger/blockledger/json"
-	"github.com/hyperledger/fabric/common/ledger/blockledger/ram"
-	config "github.com/hyperledger/fabric/orderer/common/localconfig"
+	"deepchain/common/ledger/blkstorage/fsblkstorage"
+	"deepchain/common/ledger/blockledger"
+	"deepchain/common/ledger/blockledger/file"
+	"deepchain/common/ledger/blockledger/json"
+	"deepchain/common/ledger/blockledger/ram"
+	config "deepchain/orderer/common/localconfig"
 )
 
 func createLedgerFactory(conf *config.TopLevel) (blockledger.Factory, string) {

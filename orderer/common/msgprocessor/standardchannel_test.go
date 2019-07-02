@@ -10,9 +10,9 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/hyperledger/fabric/common/crypto"
-	cb "github.com/hyperledger/fabric/protos/common"
-	"github.com/hyperledger/fabric/protos/utils"
+	"deepchain/common/crypto"
+	cb "deepchain/protos/common"
+	"deepchain/protos/utils"
 	"github.com/stretchr/testify/assert"
 )
 

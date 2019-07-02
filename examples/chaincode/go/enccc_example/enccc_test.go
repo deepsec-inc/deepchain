@@ -5,8 +5,8 @@ import (
 	"encoding/json"
 	"testing"
 
-	"github.com/hyperledger/fabric/bccsp/factory"
-	"github.com/hyperledger/fabric/core/chaincode/shim"
+	"deepchain/bccsp/factory"
+	"deepchain/core/chaincode/shim"
 	"github.com/stretchr/testify/assert"
 )
 

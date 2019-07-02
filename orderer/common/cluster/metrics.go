@@ -9,7 +9,7 @@ package cluster
 import (
 	"time"
 
-	"github.com/hyperledger/fabric/common/metrics"
+	"deepchain/common/metrics"
 )
 
 var (

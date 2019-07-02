@@ -4,8 +4,8 @@ package mock
 import (
 	"sync"
 
-	"github.com/hyperledger/fabric/core/ledger/kvledger/txmgmt/statedb"
-	"github.com/hyperledger/fabric/core/ledger/kvledger/txmgmt/version"
+	"deepchain/core/ledger/kvledger/txmgmt/statedb"
+	"deepchain/core/ledger/kvledger/txmgmt/version"
 )
 
 type VersionedDB struct {

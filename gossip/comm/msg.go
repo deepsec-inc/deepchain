@@ -9,7 +9,7 @@ package comm
 import (
 	"sync"
 
-	proto "github.com/hyperledger/fabric/protos/gossip"
+	proto "deepchain/protos/gossip"
 	"github.com/pkg/errors"
 )
 

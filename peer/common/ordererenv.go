@@ -9,7 +9,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/hyperledger/fabric/common/flogging"
+	"deepchain/common/flogging"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )

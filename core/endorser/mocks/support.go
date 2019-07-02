@@ -4,12 +4,12 @@ package mocks
 import (
 	"sync"
 
-	"github.com/hyperledger/fabric/common/channelconfig"
-	"github.com/hyperledger/fabric/core/common/ccprovider"
-	endorser_test "github.com/hyperledger/fabric/core/endorser"
-	"github.com/hyperledger/fabric/core/ledger"
-	"github.com/hyperledger/fabric/protos/common"
-	pb "github.com/hyperledger/fabric/protos/peer"
+	"deepchain/common/channelconfig"
+	"deepchain/core/common/ccprovider"
+	endorser_test "deepchain/core/endorser"
+	"deepchain/core/ledger"
+	"deepchain/protos/common"
+	pb "deepchain/protos/peer"
 )
 
 type Support struct {

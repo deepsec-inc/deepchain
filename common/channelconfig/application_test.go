@@ -10,9 +10,9 @@ import (
 	"testing"
 
 	"github.com/golang/protobuf/proto"
-	"github.com/hyperledger/fabric/common/capabilities"
-	cb "github.com/hyperledger/fabric/protos/common"
-	"github.com/hyperledger/fabric/protos/utils"
+	"deepchain/common/capabilities"
+	cb "deepchain/protos/common"
+	"deepchain/protos/utils"
 	. "github.com/onsi/gomega"
 )
 

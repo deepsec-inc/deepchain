@@ -7,8 +7,8 @@ SPDX-License-Identifier: Apache-2.0
 package validation
 
 import (
-	"github.com/hyperledger/fabric/core/handlers/validation/api"
-	"github.com/hyperledger/fabric/protos/msp"
+	"deepchain/core/handlers/validation/api"
+	"deepchain/protos/msp"
 )
 
 // IdentityDeserializer converts serialized identities

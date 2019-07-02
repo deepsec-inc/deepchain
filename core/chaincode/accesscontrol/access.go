@@ -11,9 +11,9 @@ import (
 	"fmt"
 
 	"github.com/golang/protobuf/proto"
-	"github.com/hyperledger/fabric/common/crypto/tlsgen"
-	"github.com/hyperledger/fabric/common/flogging"
-	pb "github.com/hyperledger/fabric/protos/peer"
+	"deepchain/common/crypto/tlsgen"
+	"deepchain/common/flogging"
+	pb "deepchain/protos/peer"
 	"google.golang.org/grpc"
 )
 

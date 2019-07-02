@@ -10,10 +10,10 @@ import (
 	"fmt"
 	"testing"
 
-	mockpolicies "github.com/hyperledger/fabric/common/mocks/policies"
-	"github.com/hyperledger/fabric/common/policies"
-	cb "github.com/hyperledger/fabric/protos/common"
-	"github.com/hyperledger/fabric/protos/utils"
+	mockpolicies "deepchain/common/mocks/policies"
+	"deepchain/common/policies"
+	cb "deepchain/protos/common"
+	"deepchain/protos/utils"
 	"github.com/stretchr/testify/assert"
 )
 

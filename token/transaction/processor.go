@@ -9,9 +9,9 @@ package transaction
 import (
 	"fmt"
 
-	"github.com/hyperledger/fabric/common/flogging"
-	"github.com/hyperledger/fabric/core/ledger"
-	"github.com/hyperledger/fabric/protos/common"
+	"deepchain/common/flogging"
+	"deepchain/core/ledger"
+	"deepchain/protos/common"
 	"github.com/pkg/errors"
 )
 

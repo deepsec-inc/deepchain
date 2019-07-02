@@ -14,12 +14,12 @@ import (
 	"unicode/utf8"
 
 	"github.com/golang/protobuf/proto"
-	"github.com/hyperledger/fabric/common/flogging"
-	"github.com/hyperledger/fabric/core/ledger/customtx"
-	"github.com/hyperledger/fabric/protos/token"
-	"github.com/hyperledger/fabric/protos/utils"
-	"github.com/hyperledger/fabric/token/identity"
-	"github.com/hyperledger/fabric/token/ledger"
+	"deepchain/common/flogging"
+	"deepchain/core/ledger/customtx"
+	"deepchain/protos/token"
+	"deepchain/protos/utils"
+	"deepchain/token/identity"
+	"deepchain/token/ledger"
 	"github.com/pkg/errors"
 )
 

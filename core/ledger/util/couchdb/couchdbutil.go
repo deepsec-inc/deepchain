@@ -15,8 +15,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/hyperledger/fabric/common/metrics"
-	"github.com/hyperledger/fabric/common/util"
+	"deepchain/common/metrics"
+	"deepchain/common/util"
 	"github.com/pkg/errors"
 )
 

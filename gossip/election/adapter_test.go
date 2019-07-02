@@ -14,13 +14,13 @@ import (
 	"testing"
 	"time"
 
-	"github.com/hyperledger/fabric/common/metrics/disabled"
-	"github.com/hyperledger/fabric/gossip/common"
-	"github.com/hyperledger/fabric/gossip/discovery"
-	"github.com/hyperledger/fabric/gossip/metrics"
-	"github.com/hyperledger/fabric/gossip/metrics/mocks"
-	"github.com/hyperledger/fabric/gossip/util"
-	proto "github.com/hyperledger/fabric/protos/gossip"
+	"deepchain/common/metrics/disabled"
+	"deepchain/gossip/common"
+	"deepchain/gossip/discovery"
+	"deepchain/gossip/metrics"
+	"deepchain/gossip/metrics/mocks"
+	"deepchain/gossip/util"
+	proto "deepchain/protos/gossip"
 	"github.com/stretchr/testify/assert"
 )
 

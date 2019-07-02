@@ -7,10 +7,10 @@ package transaction_test
 
 import (
 	"github.com/golang/protobuf/proto"
-	"github.com/hyperledger/fabric/protos/common"
-	"github.com/hyperledger/fabric/protos/token"
-	"github.com/hyperledger/fabric/token/transaction"
-	"github.com/hyperledger/fabric/token/transaction/mock"
+	"deepchain/protos/common"
+	"deepchain/protos/token"
+	"deepchain/token/transaction"
+	"deepchain/token/transaction/mock"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 	"github.com/pkg/errors"

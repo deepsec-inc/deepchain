@@ -11,9 +11,9 @@ import (
 	"math"
 
 	"github.com/golang/protobuf/proto"
-	"github.com/hyperledger/fabric/core/ledger/kvledger/txmgmt/version"
-	"github.com/hyperledger/fabric/core/ledger/util"
-	"github.com/hyperledger/fabric/protos/ledger/rwset"
+	"deepchain/core/ledger/kvledger/txmgmt/version"
+	"deepchain/core/ledger/util"
+	"deepchain/protos/ledger/rwset"
 	"github.com/pkg/errors"
 	"github.com/willf/bitset"
 )

@@ -12,8 +12,8 @@ import (
 	"plugin"
 	"sync"
 
-	"github.com/hyperledger/fabric/common/viperutil"
-	"github.com/hyperledger/fabric/core/chaincode/shim"
+	"deepchain/common/viperutil"
+	"deepchain/core/chaincode/shim"
 	"github.com/pkg/errors"
 )
 

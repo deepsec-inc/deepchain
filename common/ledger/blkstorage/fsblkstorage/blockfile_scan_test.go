@@ -20,9 +20,9 @@ import (
 	"os"
 	"testing"
 
-	"github.com/hyperledger/fabric/common/ledger/testutil"
-	"github.com/hyperledger/fabric/common/ledger/util"
-	"github.com/hyperledger/fabric/protos/common"
+	"deepchain/common/ledger/testutil"
+	"deepchain/common/ledger/util"
+	"deepchain/protos/common"
 	"github.com/stretchr/testify/assert"
 )
 

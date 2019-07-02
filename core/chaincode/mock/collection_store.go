@@ -4,10 +4,10 @@ package mock
 import (
 	sync "sync"
 
-	privdata "github.com/hyperledger/fabric/core/common/privdata"
-	ledger "github.com/hyperledger/fabric/core/ledger"
-	common "github.com/hyperledger/fabric/protos/common"
-	peer "github.com/hyperledger/fabric/protos/peer"
+	privdata "deepchain/core/common/privdata"
+	ledger "deepchain/core/ledger"
+	common "deepchain/protos/common"
+	peer "deepchain/protos/peer"
 )
 
 type CollectionStore struct {

@@ -13,10 +13,10 @@ import (
 	"fmt"
 
 	"github.com/golang/protobuf/proto"
-	"github.com/hyperledger/fabric/core/common/privdata"
-	"github.com/hyperledger/fabric/protos/common"
-	"github.com/hyperledger/fabric/protos/ledger/rwset"
-	"github.com/hyperledger/fabric/protos/transientstore"
+	"deepchain/core/common/privdata"
+	"deepchain/protos/common"
+	"deepchain/protos/ledger/rwset"
+	"deepchain/protos/transientstore"
 	"github.com/pkg/errors"
 )
 

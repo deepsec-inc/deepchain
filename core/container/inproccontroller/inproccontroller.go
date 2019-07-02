@@ -11,11 +11,11 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/hyperledger/fabric/common/flogging"
-	"github.com/hyperledger/fabric/core/chaincode/shim"
-	"github.com/hyperledger/fabric/core/container"
-	"github.com/hyperledger/fabric/core/container/ccintf"
-	pb "github.com/hyperledger/fabric/protos/peer"
+	"deepchain/common/flogging"
+	"deepchain/core/chaincode/shim"
+	"deepchain/core/container"
+	"deepchain/core/container/ccintf"
+	pb "deepchain/protos/peer"
 )
 
 // ContainerType is the string which the inproc container type

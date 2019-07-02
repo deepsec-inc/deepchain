@@ -9,13 +9,13 @@ package etcdraft_test
 import (
 	"testing"
 
-	"github.com/hyperledger/fabric/common/metrics/disabled"
-	"github.com/hyperledger/fabric/core/comm"
-	"github.com/hyperledger/fabric/orderer/common/cluster"
-	"github.com/hyperledger/fabric/orderer/common/localconfig"
-	"github.com/hyperledger/fabric/orderer/common/multichannel"
-	"github.com/hyperledger/fabric/orderer/consensus/etcdraft"
-	"github.com/hyperledger/fabric/orderer/consensus/etcdraft/mocks"
+	"deepchain/common/metrics/disabled"
+	"deepchain/core/comm"
+	"deepchain/orderer/common/cluster"
+	"deepchain/orderer/common/localconfig"
+	"deepchain/orderer/common/multichannel"
+	"deepchain/orderer/consensus/etcdraft"
+	"deepchain/orderer/consensus/etcdraft/mocks"
 	"github.com/stretchr/testify/assert"
 )
 

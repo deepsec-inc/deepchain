@@ -13,11 +13,11 @@ import (
 	"time"
 
 	"github.com/golang/protobuf/proto"
-	"github.com/hyperledger/fabric/common/flogging"
-	"github.com/hyperledger/fabric/common/flogging/floggingtest"
-	"github.com/hyperledger/fabric/msp"
-	cb "github.com/hyperledger/fabric/protos/common"
-	mb "github.com/hyperledger/fabric/protos/msp"
+	"deepchain/common/flogging"
+	"deepchain/common/flogging/floggingtest"
+	"deepchain/msp"
+	cb "deepchain/protos/common"
+	mb "deepchain/protos/msp"
 	"github.com/stretchr/testify/assert"
 )
 

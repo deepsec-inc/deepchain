@@ -10,13 +10,13 @@ import (
 	"testing"
 
 	"github.com/golang/protobuf/proto"
-	"github.com/hyperledger/fabric/common/configtx/test"
-	"github.com/hyperledger/fabric/common/util"
-	lutils "github.com/hyperledger/fabric/core/ledger/util"
-	"github.com/hyperledger/fabric/protos/common"
-	pb "github.com/hyperledger/fabric/protos/peer"
-	ptestutils "github.com/hyperledger/fabric/protos/testutils"
-	"github.com/hyperledger/fabric/protos/utils"
+	"deepchain/common/configtx/test"
+	"deepchain/common/util"
+	lutils "deepchain/core/ledger/util"
+	"deepchain/protos/common"
+	pb "deepchain/protos/peer"
+	ptestutils "deepchain/protos/testutils"
+	"deepchain/protos/utils"
 	"github.com/stretchr/testify/assert"
 )
 

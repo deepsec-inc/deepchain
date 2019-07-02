@@ -10,7 +10,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/hyperledger/fabric/common/flogging"
+	"deepchain/common/flogging"
 )
 
 func TestMain(m *testing.M) {

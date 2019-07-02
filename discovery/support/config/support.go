@@ -12,12 +12,12 @@ import (
 	"strconv"
 
 	"github.com/golang/protobuf/proto"
-	"github.com/hyperledger/fabric/common/channelconfig"
-	"github.com/hyperledger/fabric/common/flogging"
-	mspconstants "github.com/hyperledger/fabric/msp"
-	"github.com/hyperledger/fabric/protos/common"
-	"github.com/hyperledger/fabric/protos/discovery"
-	"github.com/hyperledger/fabric/protos/msp"
+	"deepchain/common/channelconfig"
+	"deepchain/common/flogging"
+	mspconstants "deepchain/msp"
+	"deepchain/protos/common"
+	"deepchain/protos/discovery"
+	"deepchain/protos/msp"
 	"github.com/pkg/errors"
 )
 

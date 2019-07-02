@@ -13,12 +13,12 @@ import (
 	"encoding/pem"
 	"time"
 
-	"github.com/hyperledger/fabric/common/crypto"
-	"github.com/hyperledger/fabric/common/flogging"
-	"github.com/hyperledger/fabric/core/comm"
-	"github.com/hyperledger/fabric/orderer/common/localconfig"
-	"github.com/hyperledger/fabric/protos/common"
-	"github.com/hyperledger/fabric/protos/utils"
+	"deepchain/common/crypto"
+	"deepchain/common/flogging"
+	"deepchain/core/comm"
+	"deepchain/orderer/common/localconfig"
+	"deepchain/protos/common"
+	"deepchain/protos/utils"
 	"github.com/pkg/errors"
 )
 

@@ -6,7 +6,7 @@ SPDX-License-Identifier: Apache-2.0
 
 package endorser
 
-import "github.com/hyperledger/fabric/common/metrics"
+import "deepchain/common/metrics"
 
 var (
 	proposalDurationHistogramOpts = metrics.HistogramOpts{

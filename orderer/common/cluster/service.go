@@ -11,10 +11,10 @@ import (
 	"io"
 	"time"
 
-	"github.com/hyperledger/fabric/common/flogging"
-	"github.com/hyperledger/fabric/common/util"
-	"github.com/hyperledger/fabric/core/comm"
-	"github.com/hyperledger/fabric/protos/orderer"
+	"deepchain/common/flogging"
+	"deepchain/common/util"
+	"deepchain/core/comm"
+	"deepchain/protos/orderer"
 	"go.uber.org/zap"
 	"google.golang.org/grpc"
 )

@@ -15,13 +15,13 @@ import (
 
 	"github.com/davecgh/go-spew/spew"
 	"github.com/golang/protobuf/proto"
-	"github.com/hyperledger/fabric/common/flogging"
-	"github.com/hyperledger/fabric/common/ledger/blkstorage"
-	"github.com/hyperledger/fabric/common/ledger/util"
-	"github.com/hyperledger/fabric/common/ledger/util/leveldbhelper"
-	"github.com/hyperledger/fabric/protos/common"
-	"github.com/hyperledger/fabric/protos/peer"
-	putil "github.com/hyperledger/fabric/protos/utils"
+	"deepchain/common/flogging"
+	"deepchain/common/ledger/blkstorage"
+	"deepchain/common/ledger/util"
+	"deepchain/common/ledger/util/leveldbhelper"
+	"deepchain/protos/common"
+	"deepchain/protos/peer"
+	putil "deepchain/protos/utils"
 	"github.com/pkg/errors"
 )
 

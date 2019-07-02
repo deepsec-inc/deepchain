@@ -13,13 +13,13 @@ import (
 	"sync"
 	"time"
 
-	util2 "github.com/hyperledger/fabric/common/util"
-	"github.com/hyperledger/fabric/core/committer"
-	"github.com/hyperledger/fabric/core/ledger"
-	"github.com/hyperledger/fabric/gossip/metrics"
-	privdatacommon "github.com/hyperledger/fabric/gossip/privdata/common"
-	"github.com/hyperledger/fabric/protos/common"
-	gossip2 "github.com/hyperledger/fabric/protos/gossip"
+	util2 "deepchain/common/util"
+	"deepchain/core/committer"
+	"deepchain/core/ledger"
+	"deepchain/gossip/metrics"
+	privdatacommon "deepchain/gossip/privdata/common"
+	"deepchain/protos/common"
+	gossip2 "deepchain/protos/gossip"
 	"github.com/pkg/errors"
 )
 

@@ -22,11 +22,11 @@ import (
 	"fmt"
 	"io/ioutil"
 
-	"github.com/hyperledger/fabric/core/scc/cscc"
-	"github.com/hyperledger/fabric/peer/common"
-	pcommon "github.com/hyperledger/fabric/protos/common"
-	pb "github.com/hyperledger/fabric/protos/peer"
-	putils "github.com/hyperledger/fabric/protos/utils"
+	"deepchain/core/scc/cscc"
+	"deepchain/peer/common"
+	pcommon "deepchain/protos/common"
+	pb "deepchain/protos/peer"
+	putils "deepchain/protos/utils"
 	"github.com/spf13/cobra"
 )
 

@@ -4,8 +4,8 @@ package mock
 import (
 	sync "sync"
 
-	token "github.com/hyperledger/fabric/protos/token"
-	server "github.com/hyperledger/fabric/token/server"
+	token "deepchain/protos/token"
+	server "deepchain/token/server"
 )
 
 type Issuer struct {

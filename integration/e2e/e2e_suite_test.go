@@ -13,7 +13,7 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/hyperledger/fabric/integration/nwo"
+	"deepchain/integration/nwo"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 	"github.com/onsi/gomega/gbytes"
