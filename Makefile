@@ -52,11 +52,12 @@ BASEIMAGE_RELEASE=0.4.15
 # Allow to build as a submodule setting the main project to
 # the PROJECT_NAME env variable, for example,
 # export PROJECT_NAME=hyperledger/fabric-test
-ifeq ($(PROJECT_NAME),true)
-PROJECT_NAME = $(PROJECT_NAME)/fabric
-else
-PROJECT_NAME = hyperledger/fabric
-endif
+#ifeq ($(PROJECT_NAME),true)
+#PROJECT_NAME = $(PROJECT_NAME)/fabric
+#else
+#PROJECT_NAME = hyperledger/fabric
+#endif
+PROJECT_NAME = deepchain
 
 BUILD_DIR ?= .build
 NEXUS_REPO = nexus3.hyperledger.org:10001/hyperledger
@@ -64,7 +65,8 @@ NEXUS_REPO = nexus3.hyperledger.org:10001/hyperledger
 EXTRA_VERSION ?= $(shell git rev-parse --short HEAD)
 PROJECT_VERSION=$(BASE_VERSION)-snapshot-$(EXTRA_VERSION)
 
-PKGNAME = github.com/$(PROJECT_NAME)
+#PKGNAME = github.com/$(PROJECT_NAME)
+PKGNAME = $(PROJECT_NAME)
 CGO_FLAGS = CGO_CFLAGS=" "
 ARCH=$(shell go env GOARCH)
 MARCH=$(shell go env GOOS)-$(shell go env GOARCH)
@@ -396,7 +398,7 @@ dist-all: dist-clean $(patsubst %,dist/%, $(RELEASE_PLATFORMS))
 dist/%: release/%
 	mkdir -p release/$(@F)/config
 	cp -r sampleconfig/*.yaml release/$(@F)/config
-	cd release/$(@F) && tar -czvf hyperledger-fabric-$(@F).$(PROJECT_VERSION).tar.gz *
+	cd release/$(@F) && tar -czvf deepchain-$(@F).$(PROJECT_VERSION).tar.gz *
 
 .PHONY: protos
 protos: buildenv
@@ -433,16 +435,16 @@ clean: docker-clean unit-test-clean release-clean
 
 .PHONY: clean-all
 clean-all: clean gotools-clean dist-clean
-	-@rm -rf /var/hyperledger/*
+	-@rm -rf /var/deepchain/*
 	-@rm -rf docs/build/
 
 .PHONY: dist-clean
 dist-clean:
-	-@rm -rf release/windows-amd64/hyperledger-fabric-windows-amd64.$(PROJECT_VERSION).tar.gz
-	-@rm -rf release/darwin-amd64/hyperledger-fabric-darwin-amd64.$(PROJECT_VERSION).tar.gz
-	-@rm -rf release/linux-amd64/hyperledger-fabric-linux-amd64.$(PROJECT_VERSION).tar.gz
-	-@rm -rf release/linux-s390x/hyperledger-fabric-linux-s390x.$(PROJECT_VERSION).tar.gz
-	-@rm -rf release/linux-ppc64le/hyperledger-fabric-linux-ppc64le.$(PROJECT_VERSION).tar.gz
+	-@rm -rf release/windows-amd64/deepchain-windows-amd64.$(PROJECT_VERSION).tar.gz
+	-@rm -rf release/darwin-amd64/deepchain-darwin-amd64.$(PROJECT_VERSION).tar.gz
+	-@rm -rf release/linux-amd64/deepchain-linux-amd64.$(PROJECT_VERSION).tar.gz
+	-@rm -rf release/linux-s390x/deepchain-linux-s390x.$(PROJECT_VERSION).tar.gz
+	-@rm -rf release/linux-ppc64le/deepchain-linux-ppc64le.$(PROJECT_VERSION).tar.gz
 
 %-release-clean:
 	$(eval TARGET = ${patsubst %-release-clean,%,${@}})

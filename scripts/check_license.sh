@@ -32,6 +32,8 @@ function filterExcludedFiles {
 		| grep -v "\.pb\.go$" \
 		| grep -v "\.pptx$" \
 		| grep -v "ci.properties" \
+		| grep -v "\.html$" \
+		| grep -v "\.mk$" \
 		| sort -u`
 
   CHECK=$(filterGeneratedFiles "$CHECK")
