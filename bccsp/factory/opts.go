@@ -22,6 +22,7 @@ func GetDefaultOpts() *FactoryOpts {
 		ProviderName: "SW",
 		SwOpts: &SwOpts{
 			HashFamily: "SHA2",
+			//HashFamily: "GMSM3",
 			SecLevel:   256,
 
 			Ephemeral: true,
