@@ -80,9 +80,28 @@ const (
 	// SHA3_384
 	SHA3_384 = "SHA3_384"
 
+	// SM2
+	SM2 = "SM2"
+
 	// X509Certificate Label for X509 certificate related operation
 	X509Certificate = "X509Certificate"
 )
+
+// SM2KeyGenOpts contains options for SM2 key generation
+type SM2KeyGenOpts struct {
+	Temporary bool
+}
+
+// Algorithm returns the key generation algorithm identifier (to be used).
+func (opts *SM2KeyGenOpts) Algorithm() string {
+	return SM2
+}
+
+// Ephemeral returns true if the key to generate has to be ephemeral,
+// false otherwise.
+func (opts *SM2KeyGenOpts) Ephemeral() bool {
+	return opts.Temporary
+}
 
 // ECDSAKeyGenOpts contains options for ECDSA key generation.
 type ECDSAKeyGenOpts struct {
