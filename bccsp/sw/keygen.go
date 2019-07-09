@@ -22,9 +22,21 @@ import (
 	"crypto/rand"
 	"crypto/rsa"
 	"fmt"
+	"gmsm/sm2"
 
 	"deepchain/bccsp"
 )
+
+type gmsm2KeyGenerator struct {
+}
+
+func (sm *gmsm2KeyGenerator) KeyGen(opts bccsp.KeyGenOpts) (k bccsp.Key, error) {
+	privateKey, err := sm2.GenerateKey()
+	if err != nil {
+		return nil, fmt.Errorf("Failed generating SM2 key [%s]", err)
+	}
+	return &gmsm2PrivateKey{privateKey}, nil
+}
 
 type ecdsaKeyGenerator struct {
 	curve elliptic.Curve
