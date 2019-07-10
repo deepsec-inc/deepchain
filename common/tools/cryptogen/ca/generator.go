@@ -20,8 +20,11 @@ import (
 	"strings"
 	"time"
 
+	"deepchain/bccsp"
 	"deepchain/bccsp/utils"
+	"deepchain/bccsp/sw"
 	"deepchain/common/tools/cryptogen/csp"
+	"github.com/tjfoc/gmsm/sm2"
 )
 
 type CA struct {
@@ -35,8 +38,9 @@ type CA struct {
 	//SignKey  *ecdsa.PrivateKey
 	Signer   crypto.Signer
 	SignCert *x509.Certificate
-	//SignSm2Cert *sm2.Certificate
-	//Sm2Key      bccsp.Key
+	// gm certificate parameters
+	SignSm2Cert *sm2.Certificate
+	Sm2Key      bccsp.Key
 }
 
 // NewCA creates an instance of CA and saves the signing key pair in
@@ -48,13 +52,13 @@ func NewCA(baseDir, org, name, country, province, locality, orgUnit, streetAddre
 
 	err := os.MkdirAll(baseDir, 0755)
 	if err == nil {
-		priv, signer, err := csp.GeneratePrivateKey(baseDir)
-		//priv, _, err := csp.GeneratePrivateKey(baseDir)
+		// priv, signer, err := csp.GeneratePrivateKey(baseDir)
+		priv, _, err := csp.GeneratePrivateKey(baseDir) //sm2 based certificate doesn't use signer
 		response = err
 		if err == nil {
 			// get public signing certificate
-			ecPubKey, err := csp.GetECPublicKey(priv)
-			//sm2PubKey, err := csp.GetSM2PublicKey(priv)
+			// ecPubKey, err := csp.GetECPublicKey(priv)
+			sm2PubKey, err := csp.GetSM2PublicKey(priv) //sm2 based certificate
 			response = err
 			if err == nil {
 				template := x509Template()
@@ -76,27 +80,27 @@ func NewCA(baseDir, org, name, country, province, locality, orgUnit, streetAddre
 				template.Subject = subject
 				template.SubjectKeyId = priv.SKI()
 
-				x509Cert, err := genCertificateECDSA(baseDir, name, &template, &template,
-					ecPubKey, signer)
-				/*
-				sm2cert := gm.ParseX509Certificate2Sm2(&template)
+				// generate gm supported x.509 certificate
+				// x509Cert, err := genCertificateECDSA(baseDir, name, &template, &template,
+					// ecPubKey, signer)
+				sm2cert := sw.ParseX509Certificate2Sm2(&template)
 				sm2cert.PublicKey = sm2PubKey
 				x509Cert, err := genCertificateGMSM2(baseDir, name, sm2cert, sm2cert, sm2PubKey, priv)
-				*/
+
 				response = err
 				if err == nil {
 					ca = &CA{
 						Name:               name,
-						Signer:             signer,
-						SignCert:           x509Cert,
+						// Signer:             signer,
+						// SignCert:           x509Cert,
 						Country:            country,
 						Province:           province,
 						Locality:           locality,
 						OrganizationalUnit: orgUnit,
 						StreetAddress:      streetAddress,
 						PostalCode:         postalCode,
-						//SignSm2Cert:        x509Cert,
-						//Sm2Key:             priv,
+						SignSm2Cert:        x509Cert,
+						Sm2Key:             priv,
 					}
 				}
 			}
@@ -107,10 +111,10 @@ func NewCA(baseDir, org, name, country, province, locality, orgUnit, streetAddre
 
 // SignCertificate creates a signed certificate based on a built-in template
 // and saves it in baseDir/name
-func (ca *CA) SignCertificate(baseDir, name string, ous, sans []string, pub *ecdsa.PublicKey,
-	ku x509.KeyUsage, eku []x509.ExtKeyUsage) (*x509.Certificate, error) {
-//func (ca *CA) SignCertificate(baseDir, name string, ous, sans []string, pub *sm2.PublicKey,
-//	ku x509.KeyUsage, eku []x509.ExtKeyUsage) (*sm2.Certificate, error) {
+// func (ca *CA) SignCertificate(baseDir, name string, ous, sans []string, pub *ecdsa.PublicKey,
+// 	ku x509.KeyUsage, eku []x509.ExtKeyUsage) (*x509.Certificate, error) {
+func (ca *CA) SignCertificate(baseDir, name string, ous, sans []string, pub *sm2.PublicKey,
+	ku x509.KeyUsage, eku []x509.ExtKeyUsage) (*sm2.Certificate, error) {
 
 	template := x509Template()
 	template.KeyUsage = ku
@@ -133,11 +137,11 @@ func (ca *CA) SignCertificate(baseDir, name string, ous, sans []string, pub *ecd
 		}
 	}
 
-	cert, err := genCertificateECDSA(baseDir, name, &template, ca.SignCert,
-		pub, ca.Signer)
-	// template.PublicKey = pub
-	// sm2Tpl := gm.ParseX509Certificate2Sm2(&template)
-	// cert, err := genCertificateGMSM2(baseDir, name, sm2Tpl, ca.SignSm2Cert, pub, ca.Sm2Key)
+	// cert, err := genCertificateECDSA(baseDir, name, &template, ca.SignCert,
+	// 	pub, ca.Signer)
+	template.PublicKey = pub
+	sm2Tpl := sw.ParseX509Certificate2Sm2(&template)
+	cert, err := genCertificateGMSM2(baseDir, name, sm2Tpl, ca.SignSm2Cert, pub, ca.Sm2Key)
 
 	if err != nil {
 		return nil, err
@@ -258,13 +262,12 @@ func LoadCertificateECDSA(certPath string) (*x509.Certificate, error) {
 	return cert, err
 }
 
-/*
 //generate a signed X509 certficate using GMSM2
 func genCertificateGMSM2(baseDir, name string, template, parent *sm2.Certificate, pub *sm2.PublicKey,
 	key bccsp.Key) (*sm2.Certificate, error) {
 	//fmt.Println("hehehehe", template.PublicKey.(*sm2.PublicKey))
 	//create the x509 public cert
-	certBytes, err := gm.CreateCertificateToMem(template, parent, key)
+	certBytes, err := sw.CreateCertificateToMem(template, parent, key)
 
 	if err != nil {
 		return nil, err
@@ -278,15 +281,7 @@ func genCertificateGMSM2(baseDir, name string, template, parent *sm2.Certificate
 	if err != nil {
 		return nil, err
 	}
-
-	// //pem encode the cert
-	// err = pem.Encode(certFile, &pem.Block{Type: "CERTIFICATE", Bytes: certBytes})
-	// certFile.Close()
-	// if err != nil {
-	// 	return nil, err
-	// }
-	//x509Cert, err := sm2.ReadCertificateFromPem(fileName)
-
+	
 	x509Cert, err := sm2.ReadCertificateFromMem(certBytes)
 	if err != nil {
 		return nil, err
@@ -319,5 +314,3 @@ func LoadCertificateGMSM2(certPath string) (*sm2.Certificate, error) {
 
 	return cert, err
 }
-
-*/

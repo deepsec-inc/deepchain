@@ -23,7 +23,6 @@ import (
 	//"crypto/x509"
 	"errors"
 	"fmt"
-	"gmsm/sm2"
 	"reflect"
 
 	"deepchain/bccsp"

@@ -82,7 +82,6 @@ const (
 
 	// GMSM2
 	GMSM2 = "GMSM2"
-
 	// GMSM3
 	GMSM3 = "GMSM3"
 
