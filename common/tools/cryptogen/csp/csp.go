@@ -31,8 +31,8 @@ func LoadPrivateKey(keystorePath string) (bccsp.Key, crypto.Signer, error) {
 	opts := &factory.FactoryOpts{
 		ProviderName: "SW",
 		SwOpts: &factory.SwOpts{
-			HashFamily: "SHA2",
-			// HashFamily: "GMSM3",
+			// HashFamily: "SHA2",
+			HashFamily: "GMSM3",
 			SecLevel:   256,
 
 			FileKeystore: &factory.FileKeystoreOpts{
@@ -57,8 +57,8 @@ func LoadPrivateKey(keystorePath string) (bccsp.Key, crypto.Signer, error) {
 			if block == nil {
 				return errors.Errorf("%s: wrong PEM encoding", path)
 			}
-			priv, err = csp.KeyImport(block.Bytes, &bccsp.ECDSAPrivateKeyImportOpts{Temporary: true})
-			// priv, err = csp.KeyImport(block.Bytes, &bccsp.GMSM2PrivateKeyImportOpts{Temporary: true})
+			// priv, err = csp.KeyImport(block.Bytes, &bccsp.ECDSAPrivateKeyImportOpts{Temporary: true})
+			priv, err = csp.KeyImport(block.Bytes, &bccsp.GMSM2PrivateKeyImportOpts{Temporary: true})
 			if err != nil {
 				return err
 			}
@@ -92,8 +92,8 @@ func GeneratePrivateKey(keystorePath string) (bccsp.Key,
 	opts := &factory.FactoryOpts{
 		ProviderName: "SW",
 		SwOpts: &factory.SwOpts{
-			HashFamily: "SHA2",
-			// HashFamily: "GMSM3",
+			// HashFamily: "SHA2",
+			HashFamily: "GMSM3",
 			SecLevel:   256,
 
 			FileKeystore: &factory.FileKeystoreOpts{
@@ -104,8 +104,8 @@ func GeneratePrivateKey(keystorePath string) (bccsp.Key,
 	csp, err := factory.GetBCCSPFromOpts(opts)
 	if err == nil {
 		// generate a key
-		priv, err = csp.KeyGen(&bccsp.ECDSAP256KeyGenOpts{Temporary: false})
-		// priv, err = csp.KeyGen(&bccsp.GMSM2KeyGenOpts{Temporary: false})
+		// priv, err = csp.KeyGen(&bccsp.ECDSAP256KeyGenOpts{Temporary: false})
+		priv, err = csp.KeyGen(&bccsp.GMSM2KeyGenOpts{Temporary: false})
 		if err == nil {
 			// create a crypto.Signer
 			s, err = signer.New(csp, priv)

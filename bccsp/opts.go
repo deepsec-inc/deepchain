@@ -80,26 +80,61 @@ const (
 	// SHA3_384
 	SHA3_384 = "SHA3_384"
 
-	// SM2
-	SM2 = "SM2"
+	// GMSM2
+	GMSM2 = "GMSM2"
+
+	// GMSM3
+	GMSM3 = "GMSM3"
 
 	// X509Certificate Label for X509 certificate related operation
 	X509Certificate = "X509Certificate"
 )
 
-// SM2KeyGenOpts contains options for SM2 key generation
-type SM2KeyGenOpts struct {
+// GMSM2KeyGenOpts contains options for SM2 key generation
+type GMSM2KeyGenOpts struct {
 	Temporary bool
 }
 
 // Algorithm returns the key generation algorithm identifier (to be used).
-func (opts *SM2KeyGenOpts) Algorithm() string {
-	return SM2
+func (opts GMSM2KeyGenOpts) Algorithm() string {
+	return GMSM2
 }
 
 // Ephemeral returns true if the key to generate has to be ephemeral,
 // false otherwise.
-func (opts *SM2KeyGenOpts) Ephemeral() bool {
+func (opts *GMSM2KeyGenOpts) Ephemeral() bool {
+	return opts.Temporary
+}
+
+//GMSM2PrivateKeyImportOpts implements bccsp.KeyImportOpts
+type GMSM2PrivateKeyImportOpts struct {
+	Temporary bool
+}
+
+// Algorithm returns the key importation algorithm identifier (to be used).
+func (opts *GMSM2PrivateKeyImportOpts) Algorithm() string {
+	return GMSM2
+}
+
+// Ephemeral returns true if the key generated has to be ephemeral,
+// false otherwise.
+func (opts *GMSM2PrivateKeyImportOpts) Ephemeral() bool {
+	return opts.Temporary
+}
+
+//GMSM2PublicKeyImportOpts implements bccsp.KeyImportOpts
+type GMSM2PublicKeyImportOpts struct {
+	Temporary bool
+}
+
+// Algorithm returns the key importation algorithm identifier (to be used).
+func (opts *GMSM2PublicKeyImportOpts) Algorithm() string {
+	return GMSM2
+}
+
+// Ephemeral returns true if the key generated has to be ephemeral,
+// false otherwise.
+func (opts *GMSM2PublicKeyImportOpts) Ephemeral() bool {
 	return opts.Temporary
 }
 

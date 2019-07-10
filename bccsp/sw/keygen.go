@@ -22,7 +22,7 @@ import (
 	"crypto/rand"
 	"crypto/rsa"
 	"fmt"
-	"gmsm/sm2"
+	"github.com/tjfoc/gmsm/sm2"
 
 	"deepchain/bccsp"
 )
@@ -30,7 +30,7 @@ import (
 type gmsm2KeyGenerator struct {
 }
 
-func (sm *gmsm2KeyGenerator) KeyGen(opts bccsp.KeyGenOpts) (k bccsp.Key, error) {
+func (sm *gmsm2KeyGenerator) KeyGen(opts bccsp.KeyGenOpts) (bccsp.Key, error) {
 	privateKey, err := sm2.GenerateKey()
 	if err != nil {
 		return nil, fmt.Errorf("Failed generating SM2 key [%s]", err)
