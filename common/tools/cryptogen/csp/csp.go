@@ -149,6 +149,8 @@ func GetSM2PublicKey(priv bccsp.Key) (*sm2.PublicKey, error) {
 		return nil, err
 	}
 	// unmarshal using sm2 package defined function (pkcs8.go)
+	// test after enable x509 library support
+	// sm2PubKey, err := x509.ParsePKIXPublicKey(pubKeyBytes)
 	sm2PubKey, err := sm2.ParseSm2PublicKey(pubKeyBytes)
 	if err != nil {
 		return nil, err

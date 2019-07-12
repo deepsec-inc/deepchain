@@ -15,6 +15,7 @@ package sw
 import (
 	"crypto/elliptic"
 	"crypto/sha256"
+	_ "crypto/x509"
 	"errors"
 	"fmt"
 
@@ -72,6 +73,8 @@ type gmsm2PublicKey struct {
 // Bytes converts this key to its byte representation,
 // if this operation is allowed.
 func (k *gmsm2PublicKey) Bytes() (raw []byte, err error) {
+	// test after enable x509 library support
+	// raw, err = x509.MarshalPKIXPublicKey(k.pubKey)
 	raw, err = sm2.MarshalSm2PublicKey(k.pubKey)
 	if err != nil {
 		return nil, fmt.Errorf("Failed marshalling key [%s]", err)

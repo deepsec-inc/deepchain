@@ -149,6 +149,7 @@ func (ki *x509PublicKeyImportOptsKeyImporter) KeyImport(raw interface{}, opts bc
 	pk := sm2Cert.PublicKey
 
 	switch pk.(type) {
+	// test after enable x509 library support (delete following case)
 	case sm2.PublicKey:
 		fmt.Printf("bccsp gm keyimport pk is sm2.PublicKey")
 		sm2PublickKey, ok := pk.(sm2.PublicKey)
@@ -169,6 +170,8 @@ func (ki *x509PublicKeyImportOptsKeyImporter) KeyImport(raw interface{}, opts bc
 		if !ok {
 			return nil, errors.New("Parse interface []  to sm2 pk error")
 		}
+		// test after enable x509 library support
+		// der, err = x509.MarshalPKIXPublicKey(sm2PublickKey)
 		der, err := sm2.MarshalSm2PublicKey(sm2PublickKey)
 		if err != nil {
 			return nil, errors.New("MarshalSm2PublicKey error")
@@ -223,6 +226,8 @@ func (*gmsm2PublicKeyImportOptsKeyImporter) KeyImport(raw interface{}, opts bccs
 		return nil, errors.New("[GMSM2PublicKeyImportOpts] Invalid raw. It must not be nil.")
 	}
 
+	// test after enable x509 library support
+	// gmsm2SK, err := x509.ParsePKIXPublicKey(der)
 	gmsm2SK, err := sm2.ParseSm2PublicKey(der)
 	if err != nil {
 		return nil, fmt.Errorf("Failed converting to GMSM2 public key [%s]", err)
