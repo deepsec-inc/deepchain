@@ -22,7 +22,7 @@ import (
 	"encoding/hex"
 	"errors"
 	"fmt"
-	"github.com/tjfoc/gmsm/sm2"
+	"crypto/sm2"
 	"io/ioutil"
 	"os"
 	"path/filepath"

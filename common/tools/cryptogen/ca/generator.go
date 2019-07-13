@@ -7,7 +7,7 @@ package ca
 
 import (
 	"crypto"
-	"crypto/ecdsa"
+	// "crypto/ecdsa"
 	"crypto/rand"
 	"crypto/x509"
 	"crypto/x509/pkix"
@@ -25,7 +25,7 @@ import (
 	"deepchain/bccsp/utils"
 	"deepchain/common/tools/cryptogen/csp"
 
-	"github.com/tjfoc/gmsm/sm2"
+	"crypto/sm2"
 )
 
 type CA struct {
@@ -53,12 +53,11 @@ func NewCA(baseDir, org, name, country, province, locality, orgUnit, streetAddre
 
 	err := os.MkdirAll(baseDir, 0755)
 	if err == nil {
-		// priv, signer, err := csp.GeneratePrivateKey(baseDir)
-		priv, _, err := csp.GeneratePrivateKey(baseDir) //sm2 based certificate doesn't use signer
+		priv, signer, err := csp.GeneratePrivateKey(baseDir)
+		// priv, _, err := csp.GeneratePrivateKey(baseDir) //sm2 based certificate doesn't use signer
 		response = err
 		if err == nil {
 			// get public signing certificate
-			// test after enable x509 library support
 			// ecPubKey, err := csp.GetECPublicKey(priv)
 			sm2PubKey, err := csp.GetSM2PublicKey(priv) //sm2 based certificate
 			response = err
@@ -84,26 +83,26 @@ func NewCA(baseDir, org, name, country, province, locality, orgUnit, streetAddre
 
 				// generate gm supported x.509 certificate
 				// test after enable x509 library support
-				// x509Cert, err := genCertificateECDSA(baseDir, name, &template, &template,
-				// ecPubKey, signer)
-				sm2cert := sw.ParseX509Certificate2Sm2(&template)
-				sm2cert.PublicKey = sm2PubKey
-				x509Cert, err := genCertificateGMSM2(baseDir, name, sm2cert, sm2cert, sm2PubKey, priv)
+				x509Cert, err := genCertificateECDSA(baseDir, name, &template, &template,
+					sm2PubKey, signer)
+				// sm2cert := sw.ParseX509Certificate2Sm2(&template)
+				// sm2cert.PublicKey = sm2PubKey
+				// x509Cert, err := genCertificateGMSM2(baseDir, name, sm2cert, sm2cert, sm2PubKey, priv)
 
 				response = err
 				if err == nil {
 					ca = &CA{
 						Name: name,
-						// Signer:             signer,
-						// SignCert:           x509Cert,
+						Signer:             signer,
+						SignCert:           x509Cert,
 						Country:            country,
 						Province:           province,
 						Locality:           locality,
 						OrganizationalUnit: orgUnit,
 						StreetAddress:      streetAddress,
 						PostalCode:         postalCode,
-						SignSm2Cert:        x509Cert,
-						Sm2Key:             priv,
+						// SignSm2Cert:        x509Cert,
+						// Sm2Key:             priv,
 					}
 				}
 			}
@@ -115,9 +114,11 @@ func NewCA(baseDir, org, name, country, province, locality, orgUnit, streetAddre
 // SignCertificate creates a signed certificate based on a built-in template
 // and saves it in baseDir/name
 // func (ca *CA) SignCertificate(baseDir, name string, ous, sans []string, pub *ecdsa.PublicKey,
-// 	ku x509.KeyUsage, eku []x509.ExtKeyUsage) (*x509.Certificate, error) {
+	// ku x509.KeyUsage, eku []x509.ExtKeyUsage) (*x509.Certificate, error) {
+// func (ca *CA) SignCertificate(baseDir, name string, ous, sans []string, pub *sm2.PublicKey,
+	// ku x509.KeyUsage, eku []x509.ExtKeyUsage) (*sm2.Certificate, error) {
 func (ca *CA) SignCertificate(baseDir, name string, ous, sans []string, pub *sm2.PublicKey,
-	ku x509.KeyUsage, eku []x509.ExtKeyUsage) (*sm2.Certificate, error) {
+	ku x509.KeyUsage, eku []x509.ExtKeyUsage) (*x509.Certificate, error) {
 
 	template := x509Template()
 	template.KeyUsage = ku
@@ -140,11 +141,11 @@ func (ca *CA) SignCertificate(baseDir, name string, ous, sans []string, pub *sm2
 		}
 	}
 
-	// cert, err := genCertificateECDSA(baseDir, name, &template, ca.SignCert,
-	// 	pub, ca.Signer)
-	template.PublicKey = pub
-	sm2Tpl := sw.ParseX509Certificate2Sm2(&template)
-	cert, err := genCertificateGMSM2(baseDir, name, sm2Tpl, ca.SignSm2Cert, pub, ca.Sm2Key)
+	cert, err := genCertificateECDSA(baseDir, name, &template, ca.SignCert,
+		pub, ca.Signer)
+	// template.PublicKey = pub
+	// sm2Tpl := sw.ParseX509Certificate2Sm2(&template)
+	// cert, err := genCertificateGMSM2(baseDir, name, sm2Tpl, ca.SignSm2Cert, pub, ca.Sm2Key)
 
 	if err != nil {
 		return nil, err
@@ -214,7 +215,7 @@ func x509Template() x509.Certificate {
 // test after enable x509 library support
 // func genCertificate(baseDir, name string, template, parent *x509.Certificate, pub *ecdsa.PublicKey,
 //	priv interface{}) (*x509.Certificate, error) {
-func genCertificateECDSA(baseDir, name string, template, parent *x509.Certificate, pub *ecdsa.PublicKey,
+func genCertificateECDSA(baseDir, name string, template, parent *x509.Certificate, pub interface{},
 	priv interface{}) (*x509.Certificate, error) {
 
 	//create the x509 public cert

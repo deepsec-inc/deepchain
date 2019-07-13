@@ -20,7 +20,7 @@ import (
 	"math/big"
 
 	"deepchain/bccsp"
-	"github.com/tjfoc/gmsm/sm2"
+	"crypto/sm2"
 )
 
 type SM2Signature struct {

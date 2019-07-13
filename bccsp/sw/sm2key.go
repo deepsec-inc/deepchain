@@ -15,12 +15,12 @@ package sw
 import (
 	"crypto/elliptic"
 	"crypto/sha256"
-	_ "crypto/x509"
+	"crypto/x509"
 	"errors"
 	"fmt"
 
 	"deepchain/bccsp"
-	"github.com/tjfoc/gmsm/sm2"
+	"crypto/sm2"
 )
 
 type gmsm2PrivateKey struct {
@@ -74,8 +74,8 @@ type gmsm2PublicKey struct {
 // if this operation is allowed.
 func (k *gmsm2PublicKey) Bytes() (raw []byte, err error) {
 	// test after enable x509 library support
-	// raw, err = x509.MarshalPKIXPublicKey(k.pubKey)
-	raw, err = sm2.MarshalSm2PublicKey(k.pubKey)
+	raw, err = x509.MarshalPKIXPublicKey(k.pubKey)
+	// raw, err = sm2.MarshalSm2PublicKey(k.pubKey)
 	if err != nil {
 		return nil, fmt.Errorf("Failed marshalling key [%s]", err)
 	}

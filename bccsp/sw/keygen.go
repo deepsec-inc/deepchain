@@ -22,7 +22,7 @@ import (
 	"crypto/rand"
 	"crypto/rsa"
 	"fmt"
-	"github.com/tjfoc/gmsm/sm2"
+	"crypto/sm2"
 
 	"deepchain/bccsp"
 )

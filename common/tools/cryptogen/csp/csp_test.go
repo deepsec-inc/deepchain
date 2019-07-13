@@ -16,7 +16,7 @@ import (
 	"deepchain/bccsp"
 	"deepchain/common/tools/cryptogen/csp"
 	"github.com/stretchr/testify/assert"
-	"github.com/tjfoc/gmsm/sm2"
+	"crypto/sm2"
 )
 
 // mock implementation of bccsp.Key interface

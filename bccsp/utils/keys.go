@@ -27,7 +27,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/tjfoc/gmsm/sm2"
+	"crypto/sm2"
 )
 
 // struct to hold info required for PKCS#8
@@ -485,9 +485,9 @@ func DERToPublicKey(raw []byte) (pub interface{}, err error) {
 
 	key, err := x509.ParsePKIXPublicKey(raw)
 	// test after enable x509 library support (delete following 3 lines)
-	if err != nil {
-		key, err = sm2.ParseSm2PublicKey(raw)
-	}
+	// if err != nil {
+	// 	key, err = sm2.ParseSm2PublicKey(raw)
+	// }
 
 	return key, err
 }

@@ -23,7 +23,7 @@ import (
 	"math/big"
 
 	"deepchain/bccsp"
-	"github.com/tjfoc/gmsm/sm2"
+	"crypto/sm2"
 )
 
 // CreateCertificateToMem creates sm2 based certificate
