@@ -11,7 +11,7 @@ import (
 	"crypto/rand"
 	"crypto/x509"
 	"crypto/x509/pkix"
-	"encoding/pem"  
+	"encoding/pem"
 	"io/ioutil"
 	"math/big"
 	"net"
@@ -21,9 +21,10 @@ import (
 	"time"
 
 	"deepchain/bccsp"
-	"deepchain/bccsp/utils"
 	"deepchain/bccsp/sw"
+	"deepchain/bccsp/utils"
 	"deepchain/common/tools/cryptogen/csp"
+
 	"github.com/tjfoc/gmsm/sm2"
 )
 
@@ -57,6 +58,7 @@ func NewCA(baseDir, org, name, country, province, locality, orgUnit, streetAddre
 		response = err
 		if err == nil {
 			// get public signing certificate
+			// test after enable x509 library support
 			// ecPubKey, err := csp.GetECPublicKey(priv)
 			sm2PubKey, err := csp.GetSM2PublicKey(priv) //sm2 based certificate
 			response = err
@@ -81,8 +83,9 @@ func NewCA(baseDir, org, name, country, province, locality, orgUnit, streetAddre
 				template.SubjectKeyId = priv.SKI()
 
 				// generate gm supported x.509 certificate
+				// test after enable x509 library support
 				// x509Cert, err := genCertificateECDSA(baseDir, name, &template, &template,
-					// ecPubKey, signer)
+				// ecPubKey, signer)
 				sm2cert := sw.ParseX509Certificate2Sm2(&template)
 				sm2cert.PublicKey = sm2PubKey
 				x509Cert, err := genCertificateGMSM2(baseDir, name, sm2cert, sm2cert, sm2PubKey, priv)
@@ -90,7 +93,7 @@ func NewCA(baseDir, org, name, country, province, locality, orgUnit, streetAddre
 				response = err
 				if err == nil {
 					ca = &CA{
-						Name:               name,
+						Name: name,
 						// Signer:             signer,
 						// SignCert:           x509Cert,
 						Country:            country,
@@ -208,6 +211,9 @@ func x509Template() x509.Certificate {
 }
 
 // generate a signed X509 certificate using ECDSA
+// test after enable x509 library support
+// func genCertificate(baseDir, name string, template, parent *x509.Certificate, pub *ecdsa.PublicKey,
+//	priv interface{}) (*x509.Certificate, error) {
 func genCertificateECDSA(baseDir, name string, template, parent *x509.Certificate, pub *ecdsa.PublicKey,
 	priv interface{}) (*x509.Certificate, error) {
 
@@ -281,7 +287,7 @@ func genCertificateGMSM2(baseDir, name string, template, parent *sm2.Certificate
 	if err != nil {
 		return nil, err
 	}
-	
+
 	x509Cert, err := sm2.ReadCertificateFromMem(certBytes)
 	if err != nil {
 		return nil, err
