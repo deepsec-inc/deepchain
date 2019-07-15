@@ -270,54 +270,54 @@ func LoadCertificateECDSA(certPath string) (*x509.Certificate, error) {
 }
 
 //generate a signed X509 certficate using GMSM2
-func genCertificateGMSM2(baseDir, name string, template, parent *sm2.Certificate, pub *sm2.PublicKey,
-	key bccsp.Key) (*sm2.Certificate, error) {
-	//fmt.Println("hehehehe", template.PublicKey.(*sm2.PublicKey))
-	//create the x509 public cert
-	certBytes, err := sw.CreateCertificateToMem(template, parent, key)
+// func genCertificateGMSM2(baseDir, name string, template, parent *sm2.Certificate, pub *sm2.PublicKey,
+// 	key bccsp.Key) (*sm2.Certificate, error) {
+// 	//fmt.Println("hehehehe", template.PublicKey.(*sm2.PublicKey))
+// 	//create the x509 public cert
+// 	certBytes, err := sw.CreateCertificateToMem(template, parent, key)
 
-	if err != nil {
-		return nil, err
-	}
+// 	if err != nil {
+// 		return nil, err
+// 	}
 
-	//write cert out to file
-	fileName := filepath.Join(baseDir, name+"-cert.pem")
-	err = ioutil.WriteFile(fileName, certBytes, os.FileMode(0666))
+// 	//write cert out to file
+// 	fileName := filepath.Join(baseDir, name+"-cert.pem")
+// 	err = ioutil.WriteFile(fileName, certBytes, os.FileMode(0666))
 
-	// certFile, err := os.Create(fileName)
-	if err != nil {
-		return nil, err
-	}
+// 	// certFile, err := os.Create(fileName)
+// 	if err != nil {
+// 		return nil, err
+// 	}
 
-	x509Cert, err := sm2.ReadCertificateFromMem(certBytes)
-	if err != nil {
-		return nil, err
-	}
-	return x509Cert, nil
+// 	x509Cert, err := sm2.ReadCertificateFromMem(certBytes)
+// 	if err != nil {
+// 		return nil, err
+// 	}
+// 	return x509Cert, nil
 
-}
+// }
 
-// LoadCertificateGMSM2 load a ecdsa cert from a file in cert path
-func LoadCertificateGMSM2(certPath string) (*sm2.Certificate, error) {
-	var cert *sm2.Certificate
-	var err error
+// // LoadCertificateGMSM2 load a ecdsa cert from a file in cert path
+// func LoadCertificateGMSM2(certPath string) (*sm2.Certificate, error) {
+// 	var cert *sm2.Certificate
+// 	var err error
 
-	walkFunc := func(path string, info os.FileInfo, err error) error {
-		if strings.HasSuffix(path, ".pem") {
-			rawCert, err := ioutil.ReadFile(path)
-			if err != nil {
-				return err
-			}
-			block, _ := pem.Decode(rawCert)
-			cert, err = utils.DERToSM2Certificate(block.Bytes)
-		}
-		return nil
-	}
+// 	walkFunc := func(path string, info os.FileInfo, err error) error {
+// 		if strings.HasSuffix(path, ".pem") {
+// 			rawCert, err := ioutil.ReadFile(path)
+// 			if err != nil {
+// 				return err
+// 			}
+// 			block, _ := pem.Decode(rawCert)
+// 			cert, err = utils.DERToSM2Certificate(block.Bytes)
+// 		}
+// 		return nil
+// 	}
 
-	err = filepath.Walk(certPath, walkFunc)
-	if err != nil {
-		return nil, err
-	}
+// 	err = filepath.Walk(certPath, walkFunc)
+// 	if err != nil {
+// 		return nil, err
+// 	}
 
-	return cert, err
-}
+// 	return cert, err
+// }

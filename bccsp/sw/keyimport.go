@@ -141,12 +141,12 @@ type x509PublicKeyImportOptsKeyImporter struct {
 }
 
 func (ki *x509PublicKeyImportOptsKeyImporter) KeyImport(raw interface{}, opts bccsp.KeyImportOpts) (bccsp.Key, error) {
-	sm2Cert, ok := raw.(*sm2.Certificate)
+	cert, ok := raw.(*x509.Certificate)
 	if !ok {
 		return nil, errors.New("Invalid raw material. Expected *x509.Certificate.")
 	}
 
-	pk := sm2Cert.PublicKey
+	pk := cert.PublicKey
 
 	switch pk.(type) {
 	// test after enable x509 library support (delete following case)
@@ -165,19 +165,19 @@ func (ki *x509PublicKeyImportOptsKeyImporter) KeyImport(raw interface{}, opts bc
 	// 		der,
 	// 		&bccsp.GMSM2PublicKeyImportOpts{Temporary: opts.Ephemeral()})
 	case *sm2.PublicKey:
-		fmt.Printf("bccsp gm keyimport pk is *sm2.PublicKey")
-		sm2PublickKey, ok := pk.(*sm2.PublicKey)
-		if !ok {
-			return nil, errors.New("Parse interface []  to sm2 pk error")
-		}
-		// test after enable x509 library support
-		der, err := x509.MarshalPKIXPublicKey(sm2PublickKey)
-		// der, err := sm2.MarshalSm2PublicKey(sm2PublickKey)
-		if err != nil {
-			return nil, errors.New("MarshalSm2PublicKey error")
-		}
+		// fmt.Printf("bccsp gm keyimport pk is *sm2.PublicKey")
+		// sm2PublickKey, ok := pk.(*sm2.PublicKey)
+		// if !ok {
+		// 	return nil, errors.New("Parse interface []  to sm2 pk error")
+		// }
+		// // test after enable x509 library support
+		// der, err := x509.MarshalPKIXPublicKey(sm2PublickKey)
+		// // der, err := sm2.MarshalSm2PublicKey(sm2PublickKey)
+		// if err != nil {
+		// 	return nil, errors.New("MarshalSm2PublicKey error")
+		// }
 		return ki.bccsp.KeyImporters[reflect.TypeOf(&bccsp.GMSM2PublicKeyImportOpts{})].KeyImport(
-			der,
+			pk,
 			&bccsp.GMSM2PublicKeyImportOpts{Temporary: opts.Ephemeral()})
 	case *ecdsa.PublicKey:
 		return ki.bccsp.KeyImporters[reflect.TypeOf(&bccsp.ECDSAGoPublicKeyImportOpts{})].KeyImport(
@@ -217,21 +217,10 @@ func (*gmsm2PrivateKeyImportOptsKeyImporter) KeyImport(raw interface{}, opts bcc
 type gmsm2PublicKeyImportOptsKeyImporter struct{}
 
 func (*gmsm2PublicKeyImportOptsKeyImporter) KeyImport(raw interface{}, opts bccsp.KeyImportOpts) (k bccsp.Key, err error) {
-	der, ok := raw.([]byte)
+	lowLevelKey, ok := raw.(*sm2.PublicKey)
 	if !ok {
-		return nil, errors.New("[GMSM2PublicKeyImportOpts] Invalid raw material. Expected byte array.")
+		return nil, errors.New("Invalid raw material. Expected *ecdsa.PublicKey.")
 	}
 
-	if len(der) == 0 {
-		return nil, errors.New("[GMSM2PublicKeyImportOpts] Invalid raw. It must not be nil.")
-	}
-
-	// test after enable x509 library support
-	gmsm2SK, err := x509.ParsePKIXPublicKey(der)
-	// gmsm2SK, err := sm2.ParseSm2PublicKey(der)
-	if err != nil {
-		return nil, fmt.Errorf("Failed converting to GMSM2 public key [%s]", err)
-	}
-
-	return &gmsm2PublicKey{gmsm2SK.(*sm2.PublicKey)}, nil
+	return &gmsm2PublicKey{lowLevelKey}, nil
 }
