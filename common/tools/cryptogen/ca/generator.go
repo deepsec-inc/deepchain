@@ -21,7 +21,6 @@ import (
 	"time"
 
 	"deepchain/bccsp"
-	"deepchain/bccsp/sw"
 	"deepchain/bccsp/utils"
 	"deepchain/common/tools/cryptogen/csp"
 
