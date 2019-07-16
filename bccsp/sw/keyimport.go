@@ -19,6 +19,7 @@ package sw
 import (
 	"crypto/ecdsa"
 	"crypto/rsa"
+	"crypto/sm2"
 	"crypto/x509"
 	"errors"
 	"fmt"
@@ -139,14 +140,24 @@ type x509PublicKeyImportOptsKeyImporter struct {
 }
 
 func (ki *x509PublicKeyImportOptsKeyImporter) KeyImport(raw interface{}, opts bccsp.KeyImportOpts) (bccsp.Key, error) {
-	x509Cert, ok := raw.(*x509.Certificate)
+	x509cert, ok := raw.(*x509.Certificate)
 	if !ok {
 		return nil, errors.New("Invalid raw material. Expected *x509.Certificate.")
 	}
 
-	pk := x509Cert.PublicKey
+	pk := x509cert.PublicKey
 
 	switch pk.(type) {
+	/*
+		Sheqi Zhang and Yulong Li 2019
+		gm support addition/modification
+		Case addition: (ki *x509PublicKeyImportOptsKeyImporter) KeyImport supports
+			*sm2.PublicKey
+	*/
+	case *sm2.PublicKey:
+		return ki.bccsp.KeyImporters[reflect.TypeOf(&bccsp.GMSM2PublicKeyImportOpts{})].KeyImport(
+			pk,
+			&bccsp.GMSM2PublicKeyImportOpts{Temporary: opts.Ephemeral()})
 	case *ecdsa.PublicKey:
 		return ki.bccsp.KeyImporters[reflect.TypeOf(&bccsp.ECDSAGoPublicKeyImportOpts{})].KeyImport(
 			pk,
@@ -158,4 +169,45 @@ func (ki *x509PublicKeyImportOptsKeyImporter) KeyImport(raw interface{}, opts bc
 	default:
 		return nil, errors.New("Certificate's public key type not recognized. Supported keys: [ECDSA, RSA]")
 	}
+}
+
+/*
+	Sheqi Zhang and Yulong Li 2019
+	gm support addition/modification
+	Struct degs: gmsm2PrivateKeyImportOptsKeyImporter, gmsm2PublicKeyImportOptsKeyImporter
+	Funcs: gmsm2PrivateKeyImportOptsKeyImporter, gmsm2PublicKeyImportOptsKeyImporter implements
+		KeyImport()
+*/
+
+type gmsm2PrivateKeyImportOptsKeyImporter struct{}
+
+func (*gmsm2PrivateKeyImportOptsKeyImporter) KeyImport(raw interface{}, opts bccsp.KeyImportOpts) (k bccsp.Key, err error) {
+
+	der, ok := raw.([]byte)
+	if !ok {
+		return nil, errors.New("[GMSM2PrivateKeyImportOpts] Invalid raw material. Expected byte array.")
+	}
+
+	if len(der) == 0 {
+		return nil, errors.New("[GMSM2PrivateKeyImportOpts] Invalid raw. It must not be nil.")
+	}
+
+	gmsm2SK, err := x509.ParsePKCS8Sm2UnecryptedPrivateKey(der)
+
+	if err != nil {
+		return nil, fmt.Errorf("Failed converting to GMSM2 private key [%s]", err)
+	}
+
+	return &gmsm2PrivateKey{gmsm2SK}, nil
+}
+
+type gmsm2PublicKeyImportOptsKeyImporter struct{}
+
+func (*gmsm2PublicKeyImportOptsKeyImporter) KeyImport(raw interface{}, opts bccsp.KeyImportOpts) (k bccsp.Key, err error) {
+	lowLevelKey, ok := raw.(*sm2.PublicKey)
+	if !ok {
+		return nil, errors.New("Invalid raw material. Expected *ecdsa.PublicKey.")
+	}
+
+	return &gmsm2PublicKey{lowLevelKey}, nil
 }

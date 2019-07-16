@@ -15,9 +15,11 @@ import (
 	"path/filepath"
 	"strings"
 
+	"crypto/sm2"
 	"deepchain/bccsp"
 	"deepchain/bccsp/factory"
 	"deepchain/bccsp/signer"
+
 	"github.com/pkg/errors"
 )
 
@@ -30,7 +32,8 @@ func LoadPrivateKey(keystorePath string) (bccsp.Key, crypto.Signer, error) {
 	opts := &factory.FactoryOpts{
 		ProviderName: "SW",
 		SwOpts: &factory.SwOpts{
-			HashFamily: "SHA2",
+			// HashFamily: "SHA2",
+			HashFamily: "GMSM3",
 			SecLevel:   256,
 
 			FileKeystore: &factory.FileKeystoreOpts{
@@ -55,7 +58,8 @@ func LoadPrivateKey(keystorePath string) (bccsp.Key, crypto.Signer, error) {
 			if block == nil {
 				return errors.Errorf("%s: wrong PEM encoding", path)
 			}
-			priv, err = csp.KeyImport(block.Bytes, &bccsp.ECDSAPrivateKeyImportOpts{Temporary: true})
+			// priv, err = csp.KeyImport(block.Bytes, &bccsp.ECDSAPrivateKeyImportOpts{Temporary: true})
+			priv, err = csp.KeyImport(block.Bytes, &bccsp.GMSM2PrivateKeyImportOpts{Temporary: true})
 			if err != nil {
 				return err
 			}
@@ -89,7 +93,8 @@ func GeneratePrivateKey(keystorePath string) (bccsp.Key,
 	opts := &factory.FactoryOpts{
 		ProviderName: "SW",
 		SwOpts: &factory.SwOpts{
-			HashFamily: "SHA2",
+			// HashFamily: "SHA2",
+			HashFamily: "GMSM3",
 			SecLevel:   256,
 
 			FileKeystore: &factory.FileKeystoreOpts{
@@ -100,7 +105,8 @@ func GeneratePrivateKey(keystorePath string) (bccsp.Key,
 	csp, err := factory.GetBCCSPFromOpts(opts)
 	if err == nil {
 		// generate a key
-		priv, err = csp.KeyGen(&bccsp.ECDSAP256KeyGenOpts{Temporary: false})
+		// priv, err = csp.KeyGen(&bccsp.ECDSAP256KeyGenOpts{Temporary: false})
+		priv, err = csp.KeyGen(&bccsp.GMSM2KeyGenOpts{Temporary: false})
 		if err == nil {
 			// create a crypto.Signer
 			s, err = signer.New(csp, priv)
@@ -127,4 +133,28 @@ func GetECPublicKey(priv bccsp.Key) (*ecdsa.PublicKey, error) {
 		return nil, err
 	}
 	return ecPubKey.(*ecdsa.PublicKey), nil
+}
+
+// GetSM2PublicKey gets public key for sm2
+func GetSM2PublicKey(priv bccsp.Key) (*sm2.PublicKey, error) {
+
+	// get the public key
+	pubKey, err := priv.PublicKey()
+	if err != nil {
+		return nil, err
+	}
+
+	// marshal to bytes
+	pubKeyBytes, err := pubKey.Bytes()
+	if err != nil {
+		return nil, err
+	}
+	// unmarshal using sm2 package defined function (pkcs8.go)
+	// test after enable x509 library support
+	sm2PubKey, err := x509.ParsePKIXPublicKey(pubKeyBytes)
+	// sm2PubKey, err := sm2.ParseSm2PublicKey(pubKeyBytes)
+	if err != nil {
+		return nil, err
+	}
+	return sm2PubKey.(*sm2.PublicKey), nil
 }

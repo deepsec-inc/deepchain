@@ -21,10 +21,29 @@ import (
 	"crypto/elliptic"
 	"crypto/rand"
 	"crypto/rsa"
+	"crypto/sm2"
 	"fmt"
 
 	"deepchain/bccsp"
 )
+
+/*
+	Sheqi Zhang and Yulong Li 2019
+	gm support addition/modification
+	Struct defs: gmsm2KeyGenerator
+	Funcs: (sm *gmsm2KeyGenerator) KeyGen
+*/
+
+type gmsm2KeyGenerator struct {
+}
+
+func (sm *gmsm2KeyGenerator) KeyGen(opts bccsp.KeyGenOpts) (bccsp.Key, error) {
+	privateKey, err := sm2.GenerateKey()
+	if err != nil {
+		return nil, fmt.Errorf("Failed generating SM2 key [%s]", err)
+	}
+	return &gmsm2PrivateKey{privateKey}, nil
+}
 
 type ecdsaKeyGenerator struct {
 	curve elliptic.Curve

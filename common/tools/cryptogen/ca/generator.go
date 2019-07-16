@@ -7,7 +7,7 @@ package ca
 
 import (
 	"crypto"
-	"crypto/ecdsa"
+	// "crypto/ecdsa"
 	"crypto/rand"
 	"crypto/x509"
 	"crypto/x509/pkix"
@@ -20,8 +20,11 @@ import (
 	"strings"
 	"time"
 
+	// "deepchain/bccsp"
 	"deepchain/bccsp/utils"
 	"deepchain/common/tools/cryptogen/csp"
+
+	"crypto/sm2"
 )
 
 type CA struct {
@@ -35,6 +38,9 @@ type CA struct {
 	//SignKey  *ecdsa.PrivateKey
 	Signer   crypto.Signer
 	SignCert *x509.Certificate
+	// gm certificate parameters
+	// SignSm2Cert *sm2.Certificate
+	// Sm2Key      bccsp.Key
 }
 
 // NewCA creates an instance of CA and saves the signing key pair in
@@ -47,10 +53,12 @@ func NewCA(baseDir, org, name, country, province, locality, orgUnit, streetAddre
 	err := os.MkdirAll(baseDir, 0755)
 	if err == nil {
 		priv, signer, err := csp.GeneratePrivateKey(baseDir)
+		// priv, _, err := csp.GeneratePrivateKey(baseDir) //sm2 based certificate doesn't use signer
 		response = err
 		if err == nil {
 			// get public signing certificate
-			ecPubKey, err := csp.GetECPublicKey(priv)
+			// ecPubKey, err := csp.GetECPublicKey(priv)
+			sm2PubKey, err := csp.GetSM2PublicKey(priv) //sm2 based certificate
 			response = err
 			if err == nil {
 				template := x509Template()
@@ -72,8 +80,14 @@ func NewCA(baseDir, org, name, country, province, locality, orgUnit, streetAddre
 				template.Subject = subject
 				template.SubjectKeyId = priv.SKI()
 
-				x509Cert, err := genCertificateECDSA(baseDir, name, &template, &template,
-					ecPubKey, signer)
+				// generate gm supported x.509 certificate
+				// test after enable x509 library support
+				x509Cert, err := genCertificate(baseDir, name, &template, &template,
+					sm2PubKey, signer)
+				// sm2cert := sw.ParseX509Certificate2Sm2(&template)
+				// sm2cert.PublicKey = sm2PubKey
+				// x509Cert, err := genCertificateGMSM2(baseDir, name, sm2cert, sm2cert, sm2PubKey, priv)
+
 				response = err
 				if err == nil {
 					ca = &CA{
@@ -86,6 +100,8 @@ func NewCA(baseDir, org, name, country, province, locality, orgUnit, streetAddre
 						OrganizationalUnit: orgUnit,
 						StreetAddress:      streetAddress,
 						PostalCode:         postalCode,
+						// SignSm2Cert:        x509Cert,
+						// Sm2Key:             priv,
 					}
 				}
 			}
@@ -96,7 +112,11 @@ func NewCA(baseDir, org, name, country, province, locality, orgUnit, streetAddre
 
 // SignCertificate creates a signed certificate based on a built-in template
 // and saves it in baseDir/name
-func (ca *CA) SignCertificate(baseDir, name string, ous, sans []string, pub *ecdsa.PublicKey,
+// func (ca *CA) SignCertificate(baseDir, name string, ous, sans []string, pub *ecdsa.PublicKey,
+// ku x509.KeyUsage, eku []x509.ExtKeyUsage) (*x509.Certificate, error) {
+// func (ca *CA) SignCertificate(baseDir, name string, ous, sans []string, pub *sm2.PublicKey,
+// ku x509.KeyUsage, eku []x509.ExtKeyUsage) (*sm2.Certificate, error) {
+func (ca *CA) SignCertificate(baseDir, name string, ous, sans []string, pub *sm2.PublicKey,
 	ku x509.KeyUsage, eku []x509.ExtKeyUsage) (*x509.Certificate, error) {
 
 	template := x509Template()
@@ -120,8 +140,11 @@ func (ca *CA) SignCertificate(baseDir, name string, ous, sans []string, pub *ecd
 		}
 	}
 
-	cert, err := genCertificateECDSA(baseDir, name, &template, ca.SignCert,
+	cert, err := genCertificate(baseDir, name, &template, ca.SignCert,
 		pub, ca.Signer)
+	// template.PublicKey = pub
+	// sm2Tpl := sw.ParseX509Certificate2Sm2(&template)
+	// cert, err := genCertificateGMSM2(baseDir, name, sm2Tpl, ca.SignSm2Cert, pub, ca.Sm2Key)
 
 	if err != nil {
 		return nil, err
@@ -188,7 +211,10 @@ func x509Template() x509.Certificate {
 }
 
 // generate a signed X509 certificate using ECDSA
-func genCertificateECDSA(baseDir, name string, template, parent *x509.Certificate, pub *ecdsa.PublicKey,
+// test after enable x509 library support
+// func genCertificate(baseDir, name string, template, parent *x509.Certificate, pub *ecdsa.PublicKey,
+//	priv interface{}) (*x509.Certificate, error) {
+func genCertificate(baseDir, name string, template, parent *x509.Certificate, pub interface{},
 	priv interface{}) (*x509.Certificate, error) {
 
 	//create the x509 public cert
@@ -217,8 +243,8 @@ func genCertificateECDSA(baseDir, name string, template, parent *x509.Certificat
 	return x509Cert, nil
 }
 
-// LoadCertificateECDSA load a ecdsa cert from a file in cert path
-func LoadCertificateECDSA(certPath string) (*x509.Certificate, error) {
+// LoadCertificate load a ecdsa cert from a file in cert path
+func LoadCertificate(certPath string) (*x509.Certificate, error) {
 	var cert *x509.Certificate
 	var err error
 
@@ -241,3 +267,56 @@ func LoadCertificateECDSA(certPath string) (*x509.Certificate, error) {
 
 	return cert, err
 }
+
+//generate a signed X509 certficate using GMSM2
+// func genCertificateGMSM2(baseDir, name string, template, parent *sm2.Certificate, pub *sm2.PublicKey,
+// 	key bccsp.Key) (*sm2.Certificate, error) {
+// 	//fmt.Println("hehehehe", template.PublicKey.(*sm2.PublicKey))
+// 	//create the x509 public cert
+// 	certBytes, err := sw.CreateCertificateToMem(template, parent, key)
+
+// 	if err != nil {
+// 		return nil, err
+// 	}
+
+// 	//write cert out to file
+// 	fileName := filepath.Join(baseDir, name+"-cert.pem")
+// 	err = ioutil.WriteFile(fileName, certBytes, os.FileMode(0666))
+
+// 	// certFile, err := os.Create(fileName)
+// 	if err != nil {
+// 		return nil, err
+// 	}
+
+// 	x509Cert, err := sm2.ReadCertificateFromMem(certBytes)
+// 	if err != nil {
+// 		return nil, err
+// 	}
+// 	return x509Cert, nil
+
+// }
+
+// // LoadCertificateGMSM2 load a ecdsa cert from a file in cert path
+// func LoadCertificateGMSM2(certPath string) (*sm2.Certificate, error) {
+// 	var cert *sm2.Certificate
+// 	var err error
+
+// 	walkFunc := func(path string, info os.FileInfo, err error) error {
+// 		if strings.HasSuffix(path, ".pem") {
+// 			rawCert, err := ioutil.ReadFile(path)
+// 			if err != nil {
+// 				return err
+// 			}
+// 			block, _ := pem.Decode(rawCert)
+// 			cert, err = utils.DERToSM2Certificate(block.Bytes)
+// 		}
+// 		return nil
+// 	}
+
+// 	err = filepath.Walk(certPath, walkFunc)
+// 	if err != nil {
+// 		return nil, err
+// 	}
+
+// 	return cert, err
+// }

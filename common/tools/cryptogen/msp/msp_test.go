@@ -14,6 +14,7 @@ import (
 	"deepchain/common/tools/cryptogen/ca"
 	"deepchain/common/tools/cryptogen/msp"
 	fabricmsp "deepchain/msp"
+
 	"github.com/stretchr/testify/assert"
 	"gopkg.in/yaml.v2"
 )

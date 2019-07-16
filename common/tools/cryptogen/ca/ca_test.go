@@ -6,15 +6,17 @@ SPDX-License-Identifier: Apache-2.0
 package ca_test
 
 import (
-	"crypto/ecdsa"
+	// "crypto/ecdsa"
 	"crypto/x509"
 	"net"
 	"os"
 	"path/filepath"
 	"testing"
 
+	"crypto/sm2"
 	"deepchain/common/tools/cryptogen/ca"
 	"deepchain/common/tools/cryptogen/csp"
+
 	"github.com/stretchr/testify/assert"
 )
 
@@ -44,24 +46,24 @@ func TestLoadCertificateECDSA(t *testing.T) {
 	assert.NoError(t, err, "Failed to generate signed certificate")
 
 	// get EC public key
-	ecPubKey, err := csp.GetECPublicKey(priv)
+	sm2PubKey, err := csp.GetSM2PublicKey(priv)
 	assert.NoError(t, err, "Failed to generate signed certificate")
-	assert.NotNil(t, ecPubKey, "Failed to generate signed certificate")
+	assert.NotNil(t, sm2PubKey, "Failed to generate signed certificate")
 
 	// create our CA
 	rootCA, err := ca.NewCA(caDir, testCA3Name, testCA3Name, testCountry, testProvince, testLocality, testOrganizationalUnit, testStreetAddress, testPostalCode)
 	assert.NoError(t, err, "Error generating CA")
 
-	cert, err := rootCA.SignCertificate(certDir, testName3, nil, nil, ecPubKey,
+	cert, err := rootCA.SignCertificate(certDir, testName3, nil, nil, sm2PubKey,
 		x509.KeyUsageDigitalSignature|x509.KeyUsageKeyEncipherment,
 		[]x509.ExtKeyUsage{x509.ExtKeyUsageAny})
 	assert.NoError(t, err, "Failed to generate signed certificate")
-	// KeyUsage should be x509.KeyUsageDigitalSignature | x509.KeyUsageKeyEncipherment
+	// KeyUsage should be sm2.KeyUsageDigitalSignature | sm2.KeyUsageKeyEncipherment
 	assert.Equal(t, x509.KeyUsageDigitalSignature|x509.KeyUsageKeyEncipherment,
 		cert.KeyUsage)
 	assert.Contains(t, cert.ExtKeyUsage, x509.ExtKeyUsageAny)
 
-	loadedCert, err := ca.LoadCertificateECDSA(certDir)
+	loadedCert, err := ca.LoadCertificate(certDir)
 	assert.NotNil(t, loadedCert, "Should load cert")
 	assert.Equal(t, cert.SerialNumber, loadedCert.SerialNumber, "Should have same serial number")
 	assert.Equal(t, cert.Subject.CommonName, loadedCert.Subject.CommonName, "Should have same CN")
@@ -74,8 +76,8 @@ func TestNewCA(t *testing.T) {
 	rootCA, err := ca.NewCA(caDir, testCAName, testCAName, testCountry, testProvince, testLocality, testOrganizationalUnit, testStreetAddress, testPostalCode)
 	assert.NoError(t, err, "Error generating CA")
 	assert.NotNil(t, rootCA, "Failed to return CA")
-	assert.NotNil(t, rootCA.Signer,
-		"rootCA.Signer should not be empty")
+	// assert.NotNil(t, rootCA.Signer,
+	// 	"rootCA.Signer should not be empty")
 	assert.IsType(t, &x509.Certificate{}, rootCA.SignCert,
 		"rootCA.SignCert should be type x509.Certificate")
 
@@ -110,15 +112,15 @@ func TestGenerateSignCertificate(t *testing.T) {
 	assert.NoError(t, err, "Failed to generate signed certificate")
 
 	// get EC public key
-	ecPubKey, err := csp.GetECPublicKey(priv)
+	sm2PubKey, err := csp.GetSM2PublicKey(priv)
 	assert.NoError(t, err, "Failed to generate signed certificate")
-	assert.NotNil(t, ecPubKey, "Failed to generate signed certificate")
+	assert.NotNil(t, sm2PubKey, "Failed to generate signed certificate")
 
 	// create our CA
 	rootCA, err := ca.NewCA(caDir, testCA2Name, testCA2Name, testCountry, testProvince, testLocality, testOrganizationalUnit, testStreetAddress, testPostalCode)
 	assert.NoError(t, err, "Error generating CA")
 
-	cert, err := rootCA.SignCertificate(certDir, testName, nil, nil, ecPubKey,
+	cert, err := rootCA.SignCertificate(certDir, testName, nil, nil, sm2PubKey,
 		x509.KeyUsageDigitalSignature|x509.KeyUsageKeyEncipherment,
 		[]x509.ExtKeyUsage{x509.ExtKeyUsageAny})
 	assert.NoError(t, err, "Failed to generate signed certificate")
@@ -127,21 +129,21 @@ func TestGenerateSignCertificate(t *testing.T) {
 		cert.KeyUsage)
 	assert.Contains(t, cert.ExtKeyUsage, x509.ExtKeyUsageAny)
 
-	cert, err = rootCA.SignCertificate(certDir, testName, nil, nil, ecPubKey,
+	cert, err = rootCA.SignCertificate(certDir, testName, nil, nil, sm2PubKey,
 		x509.KeyUsageDigitalSignature, []x509.ExtKeyUsage{})
 	assert.NoError(t, err, "Failed to generate signed certificate")
 	assert.Equal(t, 0, len(cert.ExtKeyUsage))
 
 	// make sure ous are correctly set
 	ous := []string{"TestOU", "PeerOU"}
-	cert, err = rootCA.SignCertificate(certDir, testName, ous, nil, ecPubKey,
+	cert, err = rootCA.SignCertificate(certDir, testName, ous, nil, sm2PubKey,
 		x509.KeyUsageDigitalSignature, []x509.ExtKeyUsage{})
 	assert.Contains(t, cert.Subject.OrganizationalUnit, ous[0])
 	assert.Contains(t, cert.Subject.OrganizationalUnit, ous[1])
 
 	// make sure sans are correctly set
 	sans := []string{testName2, testIP}
-	cert, err = rootCA.SignCertificate(certDir, testName, nil, sans, ecPubKey,
+	cert, err = rootCA.SignCertificate(certDir, testName, nil, sans, sm2PubKey,
 		x509.KeyUsageDigitalSignature, []x509.ExtKeyUsage{})
 	assert.Contains(t, cert.DNSNames, testName2)
 	assert.Contains(t, cert.IPAddresses, net.ParseIP(testIP).To4())
@@ -151,7 +153,7 @@ func TestGenerateSignCertificate(t *testing.T) {
 	assert.Equal(t, true, checkForFile(pemFile),
 		"Expected to find file "+pemFile)
 
-	_, err = rootCA.SignCertificate(certDir, "empty/CA", nil, nil, ecPubKey,
+	_, err = rootCA.SignCertificate(certDir, "empty/CA", nil, nil, sm2PubKey,
 		x509.KeyUsageKeyEncipherment, []x509.ExtKeyUsage{x509.ExtKeyUsageAny})
 	assert.Error(t, err, "Bad name should fail")
 
@@ -160,7 +162,7 @@ func TestGenerateSignCertificate(t *testing.T) {
 		Name:     "badCA",
 		SignCert: &x509.Certificate{},
 	}
-	_, err = badCA.SignCertificate(certDir, testName, nil, nil, &ecdsa.PublicKey{},
+	_, err = badCA.SignCertificate(certDir, testName, nil, nil, &sm2.PublicKey{},
 		x509.KeyUsageKeyEncipherment, []x509.ExtKeyUsage{x509.ExtKeyUsageAny})
 	assert.Error(t, err, "Empty CA should not be able to sign")
 	cleanup(testDir)

@@ -54,6 +54,22 @@ func (opts *SHA3_384Opts) Algorithm() string {
 	return SHA3_384
 }
 
+/*
+	Sheqi Zhang and Yulong Li 2019
+	gm support addition/modification
+	Struct defs: GMSM3Opts
+	Functs: GMSM3Opts implements Algorithm()
+*/
+
+// GMSM3Opts contains options relating to GMSM3Opts.
+type GMSM3Opts struct {
+}
+
+// Algorithm of GMSM3
+func (opts *GMSM3Opts) Algorithm() string {
+	return GMSM3
+}
+
 // GetHashOpt returns the HashOpts corresponding to the passed hash function
 func GetHashOpt(hashFunction string) (HashOpts, error) {
 	switch hashFunction {
@@ -65,6 +81,13 @@ func GetHashOpt(hashFunction string) (HashOpts, error) {
 		return &SHA3_256Opts{}, nil
 	case SHA3_384:
 		return &SHA3_384Opts{}, nil
+	/*
+		Sheqi Zhang and Yulong Li 2019
+		gm support addition/modification
+		Case addition: GetHashOpt() adds GMSM3 case
+	*/
+	case GMSM3:
+		return &GMSM3Opts{}, nil
 	}
 	return nil, fmt.Errorf("hash function not recognized [%s]", hashFunction)
 }
