@@ -20,7 +20,7 @@ import (
 	"strings"
 	"time"
 
-	"deepchain/bccsp"
+	// "deepchain/bccsp"
 	"deepchain/bccsp/utils"
 	"deepchain/common/tools/cryptogen/csp"
 
@@ -39,8 +39,8 @@ type CA struct {
 	Signer   crypto.Signer
 	SignCert *x509.Certificate
 	// gm certificate parameters
-	SignSm2Cert *sm2.Certificate
-	Sm2Key      bccsp.Key
+	// SignSm2Cert *sm2.Certificate
+	// Sm2Key      bccsp.Key
 }
 
 // NewCA creates an instance of CA and saves the signing key pair in

@@ -159,7 +159,7 @@ func TestGenerateSignCertificate(t *testing.T) {
 	// use an empty CA to test error path
 	badCA := &ca.CA{
 		Name:     "badCA",
-		SignSm2Cert: &sm2.Certificate{},
+		SignCert: &x509.Certificate{},
 	}
 	_, err = badCA.SignCertificate(certDir, testName, nil, nil, &sm2.PublicKey{},
 		x509.KeyUsageKeyEncipherment, []x509.ExtKeyUsage{x509.ExtKeyUsageAny})

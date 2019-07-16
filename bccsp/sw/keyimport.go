@@ -205,7 +205,7 @@ func (*gmsm2PrivateKeyImportOptsKeyImporter) KeyImport(raw interface{}, opts bcc
 		return nil, errors.New("[GMSM2PrivateKeyImportOpts] Invalid raw. It must not be nil.")
 	}
 
-	gmsm2SK, err := sm2.ParsePKCS8UnecryptedPrivateKey(der)
+	gmsm2SK, err := x509.ParsePKCS8Sm2UnecryptedPrivateKey(der)
 
 	if err != nil {
 		return nil, fmt.Errorf("Failed converting to GMSM2 private key [%s]", err)
