@@ -80,6 +80,12 @@ const (
 	// SHA3_384
 	SHA3_384 = "SHA3_384"
 
+	/*
+		Sheqi Zhang and Yulong Li 2019
+		gm support addition/modification
+		Const defs: consts GMSM2 and GMSM3
+	*/
+
 	// GMSM2
 	GMSM2 = "GMSM2"
 	// GMSM3
@@ -88,6 +94,13 @@ const (
 	// X509Certificate Label for X509 certificate related operation
 	X509Certificate = "X509Certificate"
 )
+
+/*
+	Sheqi Zhang and Yulong Li 2019
+	gm support addition/modification
+	Struct defs: GMSM2KeyGenOpts, GMSM2PrivateKey, GMSM2PublicKeyImportOpts
+	Funcs: ImportOpts Algorithm() Ephemeral()
+*/
 
 // GMSM2KeyGenOpts contains options for SM2 key generation
 type GMSM2KeyGenOpts struct {

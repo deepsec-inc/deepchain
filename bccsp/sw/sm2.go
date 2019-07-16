@@ -19,27 +19,13 @@ import (
 	"fmt"
 	"math/big"
 
-	"deepchain/bccsp"
 	"crypto/sm2"
+	"deepchain/bccsp"
 )
 
 type SM2Signature struct {
 	R, S *big.Int
 }
-
-// var (
-// 	// curveHalfOrders contains the precomputed curve group orders halved.
-// 	// It is used to ensure that signature' S value is lower or equal to the
-// 	// curve group order halved. We accept only low-S signatures.
-// 	// They are precomputed for efficiency reasons.
-// 	curveHalfOrders map[elliptic.Curve]*big.Int = map[elliptic.Curve]*big.Int{
-// 		elliptic.P224(): new(big.Int).Rsh(elliptic.P224().Params().N, 1),
-// 		elliptic.P256(): new(big.Int).Rsh(elliptic.P256().Params().N, 1),
-// 		elliptic.P384(): new(big.Int).Rsh(elliptic.P384().Params().N, 1),
-// 		elliptic.P521(): new(big.Int).Rsh(elliptic.P521().Params().N, 1),
-// 		sm2.P256Sm2():   new(big.Int).Rsh(sm2.P256Sm2().Params().N, 1),
-// 	}
-// )
 
 func MarshalSM2Signature(r, s *big.Int) ([]byte, error) {
 	return asn1.Marshal(SM2Signature{r, s})
@@ -87,25 +73,6 @@ func (s *gmsm2Signer) Sign(k bccsp.Key, digest []byte, opts bccsp.SignerOpts) (s
 	return signGMSM2(k.(*gmsm2PrivateKey).privKey, digest, opts)
 }
 
-type ecdsaPrivateKeySigner struct{}
-
-func (s *ecdsaPrivateKeySigner) Sign(k bccsp.Key, digest []byte, opts bccsp.SignerOpts) (signature []byte, err error) {
-	puk := k.(*ecdsaPrivateKey).privKey.PublicKey
-	sm2pk := sm2.PublicKey{
-		Curve: puk.Curve,
-		X:     puk.X,
-		Y:     puk.Y,
-	}
-
-	privKey := k.(*ecdsaPrivateKey).privKey
-	sm2privKey := sm2.PrivateKey{
-		D:         privKey.D,
-		PublicKey: sm2pk,
-	}
-
-	return signGMSM2(&sm2privKey, digest, opts)
-}
-
 type gmsm2PrivateKeyVerifier struct{}
 
 func (v *gmsm2PrivateKeyVerifier) Verify(k bccsp.Key, signature, digest []byte, opts bccsp.SignerOpts) (valid bool, err error) {
@@ -116,28 +83,4 @@ type gmsm2PublicKeyKeyVerifier struct{}
 
 func (v *gmsm2PublicKeyKeyVerifier) Verify(k bccsp.Key, signature, digest []byte, opts bccsp.SignerOpts) (valid bool, err error) {
 	return verifyGMSM2(k.(*gmsm2PublicKey).pubKey, signature, digest, opts)
-}
-
-type ecdsaPrivateKeyVerifier struct{}
-
-func (v *ecdsaPrivateKeyVerifier) Verify(k bccsp.Key, signature, digest []byte, opts bccsp.SignerOpts) (valid bool, err error) {
-	puk := k.(*ecdsaPrivateKey).privKey.PublicKey
-	sm2pk := sm2.PublicKey{
-		Curve: puk.Curve,
-		X:     puk.X,
-		Y:     puk.Y,
-	}
-	return verifyGMSM2(&sm2pk, signature, digest, opts)
-}
-
-type ecdsaPublicKeyKeyVerifier struct{}
-
-func (v *ecdsaPublicKeyKeyVerifier) Verify(k bccsp.Key, signature, digest []byte, opts bccsp.SignerOpts) (valid bool, err error) {
-	puk := k.(*ecdsaPublicKey).pubKey
-	sm2pk := sm2.PublicKey{
-		Curve: puk.Curve,
-		X:     puk.X,
-		Y:     puk.Y,
-	}
-	return verifyGMSM2(&sm2pk, signature, digest, opts)
 }

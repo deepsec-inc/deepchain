@@ -19,10 +19,10 @@ import (
 	"bytes"
 	"crypto/ecdsa"
 	"crypto/rsa"
+	"crypto/sm2"
 	"encoding/hex"
 	"errors"
 	"fmt"
-	"crypto/sm2"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -140,6 +140,11 @@ func (ks *fileBasedKeyStore) GetKey(ski []byte) (bccsp.Key, error) {
 			return &ecdsaPrivateKey{key.(*ecdsa.PrivateKey)}, nil
 		case *rsa.PrivateKey:
 			return &rsaPrivateKey{key.(*rsa.PrivateKey)}, nil
+		/*
+			Sheqi Zhang and Yulong Li 2019
+			gm support addition/modification
+			Case addition: (ks *fileBasedKeyStore) GetKey supports *sm2.PrivateKey
+		*/
 		case *sm2.PrivateKey:
 			return &gmsm2PrivateKey{key.(*sm2.PrivateKey)}, nil
 		default:
@@ -157,6 +162,11 @@ func (ks *fileBasedKeyStore) GetKey(ski []byte) (bccsp.Key, error) {
 			return &ecdsaPublicKey{key.(*ecdsa.PublicKey)}, nil
 		case *rsa.PublicKey:
 			return &rsaPublicKey{key.(*rsa.PublicKey)}, nil
+		/*
+			Sheqi Zhang and Yulong Li 2019
+			gm support addition/modification
+			Case addition: (ks *fileBasedKeyStore) GetKey supports *sm2.PublicKey
+		*/
 		case *sm2.PublicKey:
 			return &gmsm2PublicKey{key.(*sm2.PublicKey)}, nil
 		default:
@@ -178,6 +188,12 @@ func (ks *fileBasedKeyStore) StoreKey(k bccsp.Key) (err error) {
 		return errors.New("Invalid key. It must be different from nil.")
 	}
 	switch k.(type) {
+	/*
+		Sheqi Zhang and Yulong Li 2019
+		gm support addition/modification
+		Case addition: (ks *fileBasedKeyStore) GetKey supports
+			*gmsm2PrivateKey and *gmsm2PublicKey
+	*/
 	case *gmsm2PrivateKey:
 		kk := k.(*gmsm2PrivateKey)
 
@@ -268,6 +284,12 @@ func (ks *fileBasedKeyStore) searchKeystoreForSKI(ski []byte) (k bccsp.Key, err 
 			k = &ecdsaPrivateKey{key.(*ecdsa.PrivateKey)}
 		case *rsa.PrivateKey:
 			k = &rsaPrivateKey{key.(*rsa.PrivateKey)}
+		/*
+			Sheqi Zhang and Yulong Li 2019
+			gm support addition/modification
+			Case addition: (ks *fileBasedKeyStore) searchKeystoreForSKI supports
+				*sm2.PrivateKey
+		*/
 		case *sm2.PrivateKey:
 			k = &gmsm2PrivateKey{key.(*sm2.PrivateKey)}
 		default:

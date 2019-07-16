@@ -21,11 +21,18 @@ import (
 	"crypto/elliptic"
 	"crypto/rand"
 	"crypto/rsa"
-	"fmt"
 	"crypto/sm2"
+	"fmt"
 
 	"deepchain/bccsp"
 )
+
+/*
+	Sheqi Zhang and Yulong Li 2019
+	gm support addition/modification
+	Struct defs: gmsm2KeyGenerator
+	Funcs: (sm *gmsm2KeyGenerator) KeyGen
+*/
 
 type gmsm2KeyGenerator struct {
 }

@@ -19,8 +19,8 @@ import (
 	"errors"
 	"fmt"
 
-	"deepchain/bccsp"
 	"crypto/sm2"
+	"deepchain/bccsp"
 )
 
 type gmsm2PrivateKey struct {

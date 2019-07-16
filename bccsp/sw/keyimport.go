@@ -19,7 +19,7 @@ package sw
 import (
 	"crypto/ecdsa"
 	"crypto/rsa"
-
+	"crypto/sm2"
 	"crypto/x509"
 	"errors"
 	"fmt"
@@ -27,7 +27,6 @@ import (
 
 	"deepchain/bccsp"
 	"deepchain/bccsp/utils"
-	"crypto/sm2"
 )
 
 type aes256ImportKeyOptsKeyImporter struct{}
@@ -141,41 +140,21 @@ type x509PublicKeyImportOptsKeyImporter struct {
 }
 
 func (ki *x509PublicKeyImportOptsKeyImporter) KeyImport(raw interface{}, opts bccsp.KeyImportOpts) (bccsp.Key, error) {
-	cert, ok := raw.(*x509.Certificate)
+	x509cert, ok := raw.(*x509.Certificate)
 	if !ok {
 		return nil, errors.New("Invalid raw material. Expected *x509.Certificate.")
 	}
 
-	pk := cert.PublicKey
+	pk := x509cert.PublicKey
 
 	switch pk.(type) {
-	// test after enable x509 library support (delete following case)
-	// case sm2.PublicKey:
-	// 	fmt.Printf("bccsp gm keyimport pk is sm2.PublicKey")
-	// 	sm2PublickKey, ok := pk.(sm2.PublicKey)
-	// 	if !ok {
-	// 		return nil, errors.New("Parse interface []  to sm2 pk error")
-	// 	}
-	// 	der, err := sm2.MarshalSm2PublicKey(&sm2PublickKey)
-	// 	if err != nil {
-	// 		return nil, errors.New("MarshalSm2PublicKey error")
-	// 	}
-
-	// 	return ki.bccsp.KeyImporters[reflect.TypeOf(&bccsp.GMSM2PublicKeyImportOpts{})].KeyImport(
-	// 		der,
-	// 		&bccsp.GMSM2PublicKeyImportOpts{Temporary: opts.Ephemeral()})
+	/*
+		Sheqi Zhang and Yulong Li 2019
+		gm support addition/modification
+		Case addition: (ki *x509PublicKeyImportOptsKeyImporter) KeyImport supports
+			*sm2.PublicKey
+	*/
 	case *sm2.PublicKey:
-		// fmt.Printf("bccsp gm keyimport pk is *sm2.PublicKey")
-		// sm2PublickKey, ok := pk.(*sm2.PublicKey)
-		// if !ok {
-		// 	return nil, errors.New("Parse interface []  to sm2 pk error")
-		// }
-		// // test after enable x509 library support
-		// der, err := x509.MarshalPKIXPublicKey(sm2PublickKey)
-		// // der, err := sm2.MarshalSm2PublicKey(sm2PublickKey)
-		// if err != nil {
-		// 	return nil, errors.New("MarshalSm2PublicKey error")
-		// }
 		return ki.bccsp.KeyImporters[reflect.TypeOf(&bccsp.GMSM2PublicKeyImportOpts{})].KeyImport(
 			pk,
 			&bccsp.GMSM2PublicKeyImportOpts{Temporary: opts.Ephemeral()})
@@ -191,6 +170,14 @@ func (ki *x509PublicKeyImportOptsKeyImporter) KeyImport(raw interface{}, opts bc
 		return nil, errors.New("Certificate's public key type not recognized. Supported keys: [ECDSA, RSA]")
 	}
 }
+
+/*
+	Sheqi Zhang and Yulong Li 2019
+	gm support addition/modification
+	Struct degs: gmsm2PrivateKeyImportOptsKeyImporter, gmsm2PublicKeyImportOptsKeyImporter
+	Funcs: gmsm2PrivateKeyImportOptsKeyImporter, gmsm2PublicKeyImportOptsKeyImporter implements
+		KeyImport()
+*/
 
 type gmsm2PrivateKeyImportOptsKeyImporter struct{}
 

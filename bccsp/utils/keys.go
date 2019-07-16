@@ -144,13 +144,18 @@ func PrivateKeyToPEM(privateKey interface{}, pwd []byte) ([]byte, error) {
 				Bytes: raw,
 			},
 		), nil
+	/*
+		Sheqi Zhang and Yulong Li 2019
+		gm support addition/modification
+		Case addition: PrivateKeyToPEM() supports *sm2.PrivateKey
+	*/
 	case *sm2.PrivateKey:
 		if k == nil {
 			return nil, errors.New("Invalid sm2 private key. It must be different from nil.")
 		}
 		return x509.WritePrivateKeytoMem(k, nil)
 	default:
-		return nil, errors.New("Invalid key type. It must be *ecdsa.PrivateKey, *rsa.PrivateKey or *sm2.PrivateKey")
+		return nil, errors.New("Invalid key type. It must be *ecdsa.PrivateKey, *rsa.PrivateKey, or *sm2.PrivateKey")
 	}
 }
 
@@ -183,6 +188,11 @@ func PrivateKeyToEncryptedPEM(privateKey interface{}, pwd []byte) ([]byte, error
 		}
 
 		return pem.EncodeToMemory(block), nil
+	/*
+		Sheqi Zhang and Yulong Li 2019
+		gm support addition/modification
+		Case addition: PrivateKeyToEncryptedPEM() supports *sm2.PrivateKey
+	*/
 	case *sm2.PrivateKey:
 		if k == nil {
 			return nil, errors.New("Invalid sm2 private key. It must be different from nil.")
@@ -214,11 +224,16 @@ func DERToPrivateKey(der []byte) (key interface{}, err error) {
 		return
 	}
 
+	/*
+		Sheqi Zhang and Yulong Li 2019
+		gm support addition/modification
+		Case addition: DERToPrivateKey() supports *sm2.PrivateKey
+	*/
 	if key, err = x509.ParsePKCS8Sm2UnecryptedPrivateKey(der); err == nil {
 		return
 	}
-	
-	return nil, errors.New("Invalid key type. The DER must contain an rsa.PrivateKey, ecdsa.PrivateKey, or or *sm2.PrivateKey")
+
+	return nil, errors.New("Invalid key type. The DER must contain an rsa.PrivateKey, ecdsa.PrivateKey, or *sm2.PrivateKey")
 }
 
 // PEMtoPrivateKey unmarshals a pem to private key
@@ -351,7 +366,11 @@ func PublicKeyToPEM(publicKey interface{}, pwd []byte) ([]byte, error) {
 				Bytes: PubASN1,
 			},
 		), nil
-	// gm support addition: add sm2 case for PublicKeyToPem()
+	/*
+		Sheqi Zhang and Yulong Li 2019
+		gm support addition/modification
+		Case addition: PublickeyToPem() supports *sm2.PublicKey
+	*/
 	case *sm2.PublicKey:
 		if k == nil {
 			return nil, errors.New("Invalid sm2 public key. It must be different from nil.")
@@ -380,6 +399,24 @@ func PublicKeyToDER(publicKey interface{}) ([]byte, error) {
 	}
 
 	switch k := publicKey.(type) {
+	/*
+		Sheqi Zhang and Yulong Li 2019
+		gm support addition/modification
+		Struct defs: gmsm2KeyGenerator
+		Case addition: (ks *fileBasedKeyStore) searchKeystoreForSKI supports
+			*sm2.PrivateKey
+	*/
+	case *sm2.PublicKey:
+		if k == nil {
+			return nil, errors.New("Invalid sm2 public key. It must be different from nil.")
+		}
+		PubASN1, err := x509.MarshalPKIXPublicKey(k)
+		if err != nil {
+			return nil, err
+		}
+
+		return PubASN1, nil
+
 	case *ecdsa.PublicKey:
 		if k == nil {
 			return nil, errors.New("Invalid ecdsa public key. It must be different from nil.")
@@ -403,7 +440,7 @@ func PublicKeyToDER(publicKey interface{}) ([]byte, error) {
 		return PubASN1, nil
 
 	default:
-		return nil, errors.New("Invalid key type. It must be *ecdsa.PublicKey or *rsa.PublicKey")
+		return nil, errors.New("Invalid key type. It must be *ecdsa.PublicKey, *rsa.PublicKey, or *sm2.PublicKey")
 	}
 }
 
@@ -438,7 +475,11 @@ func PublicKeyToEncryptedPEM(publicKey interface{}, pwd []byte) ([]byte, error) 
 		}
 
 		return pem.EncodeToMemory(block), nil
-	// gm support addition: add sm2 case for PublicKeyToEncryptedPem()
+	/*
+		Sheqi Zhang and Yulong Li 2019
+		gm support addition/modification
+		Case addition: PublickeyToEncryptedPem() supports *sm2.PublicKey
+	*/
 	case *sm2.PublicKey:
 		if k == nil {
 			return nil, errors.New("Invalid gm2 public key. It must be different from nil.")
@@ -508,10 +549,6 @@ func DERToPublicKey(raw []byte) (pub interface{}, err error) {
 	}
 
 	key, err := x509.ParsePKIXPublicKey(raw)
-	// test after enable x509 library support (delete following 3 lines)
-	// if err != nil {
-	// 	key, err = sm2.ParseSm2PublicKey(raw)
-	// }
 
 	return key, err
 }

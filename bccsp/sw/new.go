@@ -9,12 +9,13 @@ import (
 	"crypto/elliptic"
 	"crypto/sha256"
 	"crypto/sha512"
+	"crypto/sm3"
 	"reflect"
 
 	"deepchain/bccsp"
+
 	"github.com/pkg/errors"
 	"golang.org/x/crypto/sha3"
-	"github.com/tjfoc/gmsm/sm3"
 )
 
 // NewDefaultSecurityLevel returns a new instance of the software-based BCCSP
@@ -36,6 +37,11 @@ func NewDefaultSecurityLevelWithKeystore(keyStore bccsp.KeyStore) (bccsp.BCCSP, 
 
 // NewWithParams returns a new instance of the software-based BCCSP
 // set at the passed security level, hash family and KeyStore.
+/*
+	Sheqi Zhang and Yulong Li 2019
+	gm support addition/modification
+	Case addition: add gm-related wrappers; specified by "// gm"
+*/
 func NewWithParams(securityLevel int, hashFamily string, keyStore bccsp.KeyStore) (bccsp.BCCSP, error) {
 	// Init config
 	conf := &config{}

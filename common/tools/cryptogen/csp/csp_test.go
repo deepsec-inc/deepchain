@@ -13,10 +13,11 @@ import (
 	"path/filepath"
 	"testing"
 
+	"crypto/sm2"
 	"deepchain/bccsp"
 	"deepchain/common/tools/cryptogen/csp"
+
 	"github.com/stretchr/testify/assert"
-	"crypto/sm2"
 )
 
 // mock implementation of bccsp.Key interface

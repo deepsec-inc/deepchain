@@ -19,11 +19,11 @@ import (
 	"crypto/elliptic"
 	"crypto/sha256"
 	"crypto/sha512"
+	"crypto/sm3"
 	"fmt"
 	"hash"
 
 	"golang.org/x/crypto/sha3"
-	"github.com/tjfoc/gmsm/sm3"
 )
 
 type config struct {
@@ -39,6 +39,11 @@ func (conf *config) setSecurityLevel(securityLevel int, hashFamily string) (err 
 		err = conf.setSecurityLevelSHA2(securityLevel)
 	case "SHA3":
 		err = conf.setSecurityLevelSHA3(securityLevel)
+	/*
+		Sheqi Zhang and Yulong Li 2019
+		gm support addition/modification
+		Case addition: setSecurityLevel() adds GMSM3 case
+	*/
 	case "GMSM3":
 		err = conf.setSecurityLevelGMSM3(securityLevel)
 	default:
@@ -82,6 +87,12 @@ func (conf *config) setSecurityLevelSHA3(level int) (err error) {
 	}
 	return
 }
+
+/*
+	Sheqi Zhang and Yulong Li 2019
+	gm support addition/modification
+	Funcs: setSecurityLevelGMSM3()
+*/
 
 func (conf *config) setSecurityLevelGMSM3(level int) (err error) {
 	switch level {

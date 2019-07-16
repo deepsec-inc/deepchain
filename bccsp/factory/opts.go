@@ -21,7 +21,15 @@ func GetDefaultOpts() *FactoryOpts {
 	return &FactoryOpts{
 		ProviderName: "SW",
 		SwOpts: &SwOpts{
-			//HashFamily: "SHA2",
+
+			/*
+				Sheqi Zhang and Yulong Li 2019
+				gm support addition/modification
+				Modify: HashFamily from "SHA2" to "GSMS3"
+				Incomplete: need related support with Hashfamily cases
+			*/
+
+			// HashFamily: "SHA2",
 			HashFamily: "GMSM3",
 			SecLevel:   256,
 

@@ -13,10 +13,11 @@ import (
 	"path/filepath"
 	"testing"
 
+	"crypto/sm2"
 	"deepchain/common/tools/cryptogen/ca"
 	"deepchain/common/tools/cryptogen/csp"
+
 	"github.com/stretchr/testify/assert"
-	"crypto/sm2"
 )
 
 const (
