@@ -699,7 +699,7 @@ func printVersion() {
 
 func getCA(caDir string, spec OrgSpec, name string) *ca.CA {
 	_, signer, _ := csp.LoadPrivateKey(caDir)
-	cert, _ := ca.LoadCertificateECDSA(caDir)
+	cert, _ := ca.LoadCertificate(caDir)
 	// priv, _, err := csp.LoadPrivateKey(caDir)
 	// if err != nil {
 	// 	panic(err)

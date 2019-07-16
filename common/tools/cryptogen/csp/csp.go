@@ -15,11 +15,12 @@ import (
 	"path/filepath"
 	"strings"
 
+	"crypto/sm2"
 	"deepchain/bccsp"
 	"deepchain/bccsp/factory"
 	"deepchain/bccsp/signer"
+
 	"github.com/pkg/errors"
-	"crypto/sm2"
 )
 
 // LoadPrivateKey loads a private key from file in keystorePath
@@ -136,7 +137,7 @@ func GetECPublicKey(priv bccsp.Key) (*ecdsa.PublicKey, error) {
 
 // GetSM2PublicKey gets public key for sm2
 func GetSM2PublicKey(priv bccsp.Key) (*sm2.PublicKey, error) {
-	
+
 	// get the public key
 	pubKey, err := priv.PublicKey()
 	if err != nil {
@@ -157,5 +158,3 @@ func GetSM2PublicKey(priv bccsp.Key) (*sm2.PublicKey, error) {
 	}
 	return sm2PubKey.(*sm2.PublicKey), nil
 }
-
-

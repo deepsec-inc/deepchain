@@ -82,7 +82,7 @@ func NewCA(baseDir, org, name, country, province, locality, orgUnit, streetAddre
 
 				// generate gm supported x.509 certificate
 				// test after enable x509 library support
-				x509Cert, err := genCertificateECDSA(baseDir, name, &template, &template,
+				x509Cert, err := genCertificate(baseDir, name, &template, &template,
 					sm2PubKey, signer)
 				// sm2cert := sw.ParseX509Certificate2Sm2(&template)
 				// sm2cert.PublicKey = sm2PubKey
@@ -91,7 +91,7 @@ func NewCA(baseDir, org, name, country, province, locality, orgUnit, streetAddre
 				response = err
 				if err == nil {
 					ca = &CA{
-						Name: name,
+						Name:               name,
 						Signer:             signer,
 						SignCert:           x509Cert,
 						Country:            country,
@@ -113,9 +113,9 @@ func NewCA(baseDir, org, name, country, province, locality, orgUnit, streetAddre
 // SignCertificate creates a signed certificate based on a built-in template
 // and saves it in baseDir/name
 // func (ca *CA) SignCertificate(baseDir, name string, ous, sans []string, pub *ecdsa.PublicKey,
-	// ku x509.KeyUsage, eku []x509.ExtKeyUsage) (*x509.Certificate, error) {
+// ku x509.KeyUsage, eku []x509.ExtKeyUsage) (*x509.Certificate, error) {
 // func (ca *CA) SignCertificate(baseDir, name string, ous, sans []string, pub *sm2.PublicKey,
-	// ku x509.KeyUsage, eku []x509.ExtKeyUsage) (*sm2.Certificate, error) {
+// ku x509.KeyUsage, eku []x509.ExtKeyUsage) (*sm2.Certificate, error) {
 func (ca *CA) SignCertificate(baseDir, name string, ous, sans []string, pub *sm2.PublicKey,
 	ku x509.KeyUsage, eku []x509.ExtKeyUsage) (*x509.Certificate, error) {
 
@@ -140,7 +140,7 @@ func (ca *CA) SignCertificate(baseDir, name string, ous, sans []string, pub *sm2
 		}
 	}
 
-	cert, err := genCertificateECDSA(baseDir, name, &template, ca.SignCert,
+	cert, err := genCertificate(baseDir, name, &template, ca.SignCert,
 		pub, ca.Signer)
 	// template.PublicKey = pub
 	// sm2Tpl := sw.ParseX509Certificate2Sm2(&template)
@@ -214,7 +214,7 @@ func x509Template() x509.Certificate {
 // test after enable x509 library support
 // func genCertificate(baseDir, name string, template, parent *x509.Certificate, pub *ecdsa.PublicKey,
 //	priv interface{}) (*x509.Certificate, error) {
-func genCertificateECDSA(baseDir, name string, template, parent *x509.Certificate, pub interface{},
+func genCertificate(baseDir, name string, template, parent *x509.Certificate, pub interface{},
 	priv interface{}) (*x509.Certificate, error) {
 
 	//create the x509 public cert
@@ -243,8 +243,8 @@ func genCertificateECDSA(baseDir, name string, template, parent *x509.Certificat
 	return x509Cert, nil
 }
 
-// LoadCertificateECDSA load a ecdsa cert from a file in cert path
-func LoadCertificateECDSA(certPath string) (*x509.Certificate, error) {
+// LoadCertificate load a ecdsa cert from a file in cert path
+func LoadCertificate(certPath string) (*x509.Certificate, error) {
 	var cert *x509.Certificate
 	var err error
 
